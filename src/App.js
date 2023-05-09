@@ -1,36 +1,29 @@
+import "./App.css"
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import './NavigationBar.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Home } from "./Pages/Home";
+import { AboutUs } from "./Pages/AboutUs";
+import { Activities } from "./Pages/Activities";
+import { Profile } from "./Pages/Profile";
+import { NavigationBar } from "./NavigationBar";
+import { LogIn } from "./Pages/LogIn";
 
-function NavigationBar() {
+function App() {
   return (
-    <Navbar bg="cyan" variant="dark" expand="lg">
-      <Navbar.Brand href="/">
-        <img
-          src="your-logo.png"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-          alt="Your logo"
-        />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav.Link href="/" exact activeClassName="active">
-            Home
-          </Nav.Link>
-          <Nav.Link href="/activity" activeClassName="active">
-            Activity
-          </Nav.Link>
-          <Nav.Link href="/about-us" activeClassName="active">
-            About Us
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+
+    <div className="App">
+      <Router>
+        <NavigationBar />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path='/Activities' element={<Activities />} />
+          <Route path='/AboutUs' element={<AboutUs />} />
+          <Route path='/LogIn' element={<LogIn />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
-export default NavigationBar;
+export default App;

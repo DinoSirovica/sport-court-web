@@ -1,0 +1,58 @@
+.navbar {
+    background-color: #1A6A69;
+}
+
+
+.text1 {
+    color: white;
+
+}
+
+.text :hover {
+    color: #F4A259;
+
+}
+
+.text :active {
+    color: #CE894B;
+
+}
+
+.text1,
+button {
+    margin-left: 15px;
+}
+
+button {
+    background-color: #F4A259;
+    border: none;
+    color: black;
+    align-self: center;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.button1 :hover {
+    background-color: #CE894B;
+    color: rgb(0, 0, 0);
+}
+
+.button1 :active {
+    background-color: #1A6A69;
+    color: white;
+}
+
+.navbar .nav-link.active {
+    color: white;
+    text-decoration: underline 3px #F4A259;
+}
+
+.navbar-toggler-icon {
+    background-image: url('./Images/hambi.svg');
+    background-size: cover;
+    background-color: transparent;
+    width: 30px; /* adjust this as needed */
+    height: 30px; /* adjust this as needed */
+    display: inline-block;
+  }

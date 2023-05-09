@@ -1,9 +1,12 @@
-import { useContext } from "react";
-import { AppContext } from '../App';
-
 export const Home = () => {
-    const {username} = useContext(AppContext)
     return (
-        <h1>This is home page and user is: {username}</h1>
-    )
+        <div className="hero-container">
+            <img src={require('../Images/hero.jpg')} alt="Hero" className="hero-image" />
+            <div className="hero-content">
+                <h1>Welcome to My Website</h1>
+                <p>Here you can find information about our services and products.</p>
+                <button className="hero-button">Learn More</button>
+            </div>
+        </div>
+    );
 }
