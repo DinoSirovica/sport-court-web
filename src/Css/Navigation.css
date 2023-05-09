@@ -1,5 +1,6 @@
 .navbar {
     background-color: #1A6A69;
+    z-index: 10;
 }
 
 
@@ -49,10 +50,14 @@ button {
 }
 
 .navbar-toggler-icon {
-    background-image: url('./Images/hambi.svg');
+    background-image: url('../Images/hambi.svg');
     background-size: cover;
     background-color: transparent;
-    width: 30px; /* adjust this as needed */
-    height: 30px; /* adjust this as needed */
+    width: 30px;
+    height: 30px;
     display: inline-block;
-  }
+}
+
+.home {
+    background-color: transparent;
+}

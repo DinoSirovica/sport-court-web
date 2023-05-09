@@ -1,4 +1,4 @@
-import './App.css';
+import '../Css/App.css';
 import { FormReg } from '../FormaReg';
 
 export function Register() {

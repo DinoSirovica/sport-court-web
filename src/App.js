@@ -1,4 +1,4 @@
-import "./App.css"
+import "./Css/App.css"
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -8,13 +8,18 @@ import { Activities } from "./Pages/Activities";
 import { Profile } from "./Pages/Profile";
 import { NavigationBar } from "./NavigationBar";
 import { LogIn } from "./Pages/LogIn";
+import { useState } from "react";
+import "./Css/fonts.css"
 
 function App() {
+
+  const [currentRoute, setCurrentRoute] = useState('/');
+
   return (
 
     <div className="App">
       <Router>
-        <NavigationBar />
+        <NavigationBar currentRoute={currentRoute}/>
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/Activities' element={<Activities />} />
