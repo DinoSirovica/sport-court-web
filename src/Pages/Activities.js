@@ -42,15 +42,25 @@ export const Activities = () => {
                                 <Card.Img variant="top" alt=""/>
                                 <Card.Body>
                                     <Card.Title>
-                                        <h4>{item.nazivTermina}</h4>
-                                        <p>{item.sportTag}</p>
+                                        <p>{item.nazivTermina} {item.sportTag}</p>
                                     </Card.Title>
+                                    <Container>
+                                        <Row>
+                                            <Col></Col>
+                                            <Col></Col>
+                                        </Row>
+                                        <Row>
+                                            <Col></Col>
+                                            <Col></Col>
+                                        </Row>
+                                    </Container>
+                                    
                                     <Card.Text>
                                     <p><BsFlag/> {item.nazivMjesto}</p>
                                     <p><BsCalendarEvent/> {item.datumTermina}</p>
                                     <p><BsClock/> {item.vrijemeTermina}</p>
                                     </Card.Text>
-                                    <Button variant="primary">Go somewhere</Button>
+
                                 </Card.Body>
                             </Card>
                         </Col>
