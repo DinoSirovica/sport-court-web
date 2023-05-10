@@ -1,26 +1,73 @@
-import {terminModal} from "../terminModal.js" 
+import TerminModal from '../ModalTermin.js';
 import React, { useState } from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
+import {podaci,ikone} from "../terminiPodaci.js";
+import Card from 'react-bootstrap/Card';
+import { BsFlag,BsCalendarEvent,BsClock } from "react-icons/bs";
 
 export const Activities = () => {
     
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
+    
+    const [ikonaSlika,setIkona] = useState(ikone[0]);
+
+    const [tempData, setTempData] = useState([]);
+
+    function handleLoad(index){
+        console.log(index);
+        const ikona=ikone[index];
+        setIkona(ikona);
+
+    }
+
+    const dohvatiPodatke = (...values) => {
+        let temp=[...values];
+        setTempData(item => [...values]);
+
+        return setModalShow(true);
+    }
 
     return (
-        
-        <Container>
-            <Row>
-                <Button onClick={() => setModalShow(true)}>Probaj</Button>
-                <terminModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-                />
-            </Row>
-            <Row></Row>
-            <Row></Row>
-        </Container>
-        
+        <>
+            
+
+            <Container >
+                <Row xs={1} md={2} lg={8} className='align-items-center mx-auto px-5 py-5 g-9'>
+                    {podaci.termini.map((item,index) => {
+                        return(
+                            
+                        <Col key={index}>
+                            <Card style={{ width: '25rem', }} onClick={() => dohvatiPodatke(Object.values(item))} className='mx-auto my-3'>
+                                <Card.Img variant="top" alt=""/>
+                                <Card.Body>
+                                    <Card.Title>
+                                        <h4>{item.nazivTermina}</h4>
+                                        <p>{item.sportTag}</p>
+                                    </Card.Title>
+                                    <Card.Text>
+                                    <p><BsFlag/> {item.nazivMjesto}</p>
+                                    <p><BsCalendarEvent/> {item.datumTermina}</p>
+                                    <p><BsClock/> {item.vrijemeTermina}</p>
+                                    </Card.Text>
+                                    <Button variant="primary">Go somewhere</Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        )
+                    })}
+                    
+                   
+                    
+                </Row>
+                <Row></Row>
+                <Row></Row>
+            </Container>
+            {
+                modalShow === true ? <TerminModal /> : ''
+            }
+            
+        </>
     );
 }
 

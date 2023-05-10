@@ -26,10 +26,5 @@ h2{
     border-radius: 1rem;
 }
 
-.sadrzaj{
-    background-image: url("../Images/Watermark.svg");
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 

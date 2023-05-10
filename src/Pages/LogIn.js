@@ -29,7 +29,7 @@ export const LogIn = () => {
                             <Form.Label><h4>Korisnička oznaka</h4></Form.Label>
                             <Form.Control className="border-radius-xl" type="email" placeholder="e.g. pero.peric@email.com" />
                             <Form.Text className="text-muted">
-                            Ne dijelimo vaše informacije ni s kim.
+                            Ne dijelimo vaše informacije ni sa kim.
                             </Form.Text>
                         </Form.Group>
 
