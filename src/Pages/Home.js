@@ -1,20 +1,31 @@
 import "../Css/Hero.css"
 import { Container, Row, Col } from "react-bootstrap";
-import { FaArrowRight } from "react-icons/fa";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { BiCalendar } from "react-icons/bi";
-import { AiFillStar } from "react-icons/ai";
+import { BiFootball } from "react-icons/bi";
+import { HiArrowNarrowRight, HiCursorClick, HiUserGroup } from "react-icons/hi"
+import { BsFillCalendar2CheckFill } from "react-icons/bs"
+import "../Css/HomePage.css"
+import "../Css/fonts.css"
+import { SportButton } from '../Sport';
+import { Link } from "react-router-dom";
 
-const Column = ({ icon, text }) => {
+const Column = ({ icon, text, miniIcon, arrow }) => {
     return (
         <div className="column">
-            <div className="column-icon">{icon}</div>
+
             <div className="column-text">{text}</div>
+            <div className="column-icon">{icon}</div>
+            <div className="column-arrow">{arrow}</div>
+            <div className="column-miniIcon">{miniIcon}</div>
         </div>
     );
 };
 
 export const Home = () => {
+
+    const handleFootballClick = () => {
+        console.log('Sport clicked!');
+    }
+
     return (
         <header>
             <div class="hero-container">
@@ -32,57 +43,117 @@ export const Home = () => {
             </div>
 
             <Container>
-                <Row>
-                    <Col lg={4} sm={12}>
+                <Row className="textAlign">
+                    <Col lg={12} sm={12}>
+                        <h2 className="h2Move">Kako koristiti?</h2>
+                    </Col>
+                    <Col lg={3} sm={12}>
                         <Column
-                            icon={<BsFillPeopleFill size={30} />}
-                            text="Lorem ipsum dolor sit amet"
+                            text="Odaberi sport"
+                            icon={<BiFootball size={85} />}
+                            miniIcon={<HiCursorClick size={30} />}
                         />
-                        <FaArrowRight size={40} className="arrow" />
+                    </Col>
+                    <Col lg={1} sm={12}>
                         <Column
-                            icon={<BiCalendar size={30} />}
-                            text="Consectetur adipiscing elit"
-                        />
-                        <FaArrowRight size={40} className="arrow" />
-                        <Column
-                            icon={<AiFillStar size={30} />}
-                            text="Sed do eiusmod tempor incididunt"
+                            arrow={<HiArrowNarrowRight size={85} />}
                         />
                     </Col>
                     <Col lg={4} sm={12}>
                         <Column
-                            icon={<AiFillStar size={30} />}
-                            text="Ut labore et dolore magna aliqua"
-                        />
-                        <FaArrowRight size={40} className="arrow" />
-                        <Column
-                            icon={<BsFillPeopleFill size={30} />}
-                            text="Sed do eiusmod tempor incididunt"
-                        />
-                        <FaArrowRight size={40} className="arrow" />
-                        <Column
-                            icon={<BiCalendar size={30} />}
-                            text="Consectetur adipiscing elit"
+                            icon={<HiUserGroup size={85} />}
+                            text="Upoznaj nove ljude"
                         />
                     </Col>
-                    <Col lg={4} sm={12}>
+                    <Col lg={1} sm={12}>
                         <Column
-                            icon={<BiCalendar size={30} />}
-                            text="Ut labore et dolore magna aliqua"
+                            arrow={<HiArrowNarrowRight size={85} />}
                         />
-                        <FaArrowRight size={40} className="arrow" />
+                    </Col>
+                    <Col lg={3} sm={12}>
                         <Column
-                            icon={<AiFillStar size={30} />}
-                            text="Consectetur adipiscing elit"
-                        />
-                        <FaArrowRight size={40} className="arrow" />
-                        <Column
-                            icon={<BsFillPeopleFill size={30} />}
-                            text="Sed do eiusmod tempor incididunt"
+                            icon={<BsFillCalendar2CheckFill size={75} />}
+                            text="Rezerviraj termin"
                         />
                     </Col>
                 </Row>
+
+                <Row className="textAlign">
+                    <Col lg={12} sm={12} style={{ marginTop: "30px" }}>
+                        <h2 className="h2Move">Naš izbor sportova</h2>
+                        <h3> Odaberi sport i rezerviraj</h3>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/Nogomet.jpg')} altText="Nogomet" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/kosarka.jpg')} altText="Košarka" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/badminton.jpg')} altText="Badminton" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/odbojka.jpg')} altText="Odbojka" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/plivanje.jpg')} altText="Plivanje" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/rukomet.jpg')} altText="Rukomet" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/stolni.jpg')} altText="Stolni" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                    <Col lg={3} md={6}>
+                        <div>
+                            <SportButton image={require('../Images/vaterpolo.jpg')} altText="Vaterpolo" onClick={handleFootballClick} />
+                        </div>
+                    </Col>
+                </Row>
             </Container>
+
+            <footer className="footer">
+                <Container>
+                    <Row className="justify-content-md-center">
+                        <Col md={6}>
+                            <h5 className="footer-title">O nama</h5>
+                            <p>Ovo je platforma namjenjena </p>
+                        </Col>
+                        <Col md={6}>
+                            <h5 className="footer-title">Navigacija</h5>
+                            <ul className="list-unstyled">
+                                <Link className="link" to="/"> Naslovna </Link>
+
+                                <Link className="link" to="/activities"> Aktivnosti </Link>
+
+                                <Link className="link" to="/aboutUS"> O nama </Link>
+
+                            </ul>
+                        </Col>
+
+                    </Row>
+                    <Row className="justify-content-md-center">
+                        <Col md={6} className="text-center">
+                            <p>&copy; 2023 Sport Court. All Rights Reserved.</p>
+                        </Col>
+                    </Row>
+                </Container>
+            </footer>
         </header>
     );
 }
