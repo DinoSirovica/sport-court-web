@@ -1,0 +1,35 @@
+.loginButton{
+   background-color: #185558;
+   color:white;
+   border-radius: 1rem;
+   border: none;
+}
+.loginButton:hover{
+    background-color: #F4A259;
+}
+
+h2{
+    text-align: center;
+}
+.googleButton{
+    border:2px solid black;
+    border-radius: 1rem;
+    color: black;
+}
+.googleButton:hover{
+    background-color: #185558;
+    color:white;
+    border-color: #185558;
+}
+
+.form-control{
+    border-radius: 1rem;
+}
+
+.sadrzaj{
+    background-image: url("../Images/Watermark.svg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
