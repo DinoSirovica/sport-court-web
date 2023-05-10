@@ -23,7 +23,7 @@ export const NavigationBar = ({}) => {
 
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav className="text" >
-              <NavLink className="text1" eventKey="1" as={Link} to="/" exact={true} isActive={() => location.pathname === "/"}>Naslovna</NavLink>
+              <NavLink className="text1" eventKey="1" as={Link} to="/"  isActive={() => location.pathname === "/"}>Naslovna</NavLink>
               <NavLink className="text1" eventKey="2" as={Link} to="/Activities" isActive={() => location.pathname.includes("/Activities")}>Aktivnosti</NavLink>
               <NavLink className="text1" eventKey="3" as={Link} to="/AboutUs" isActive={() => location.pathname.includes("/AboutUs")}>O nama</NavLink>
               <NavLink className="button1" eventKey="4" as={Link} to="/LogIn"><button>Prijavi se</button></NavLink>
