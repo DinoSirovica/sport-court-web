@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from "./Pages/Home";
 import { AboutUs } from "./Pages/AboutUs";
 import { Activities } from "./Pages/Activities";
-import { Profile } from "./Pages/Profile";
 import { NavigationBar } from "./NavigationBar";
 import { LogIn } from "./Pages/LogIn";
 import { useState } from "react";
@@ -13,7 +12,7 @@ import "./Css/fonts.css"
 
 function App() {
 
-  const [currentRoute, setCurrentRoute] = useState('/');
+  const [currentRoute, setCurrentRoute] = useState('');
 
   return (
 

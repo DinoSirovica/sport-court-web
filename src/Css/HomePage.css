@@ -1,0 +1,66 @@
+.textAlign {
+    text-align: center;
+}
+
+.h2Move {
+    margin: 30px;
+    margin-bottom: 50px;
+}
+
+.column {
+
+    margin: 20px;
+    padding: 5px;
+}
+
+.column-text {
+    font-size: 28;
+    font-style: bold;
+    padding: 5px;
+}
+
+.column-miniIcon {
+    position: relative;
+    left: 50px;
+    bottom: 20px;
+}
+
+
+@media only screen and (max-width: 991px) {
+    .column-arrow {
+        display: none;
+    }
+}
+
+.footer {
+    background-color: #0F403F;
+    color: white;
+    padding-top: 20px;
+}
+
+.footer-title {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.link {
+    margin-right: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #F4A259;
+    text-decoration: none;
+}
+
+ul a {
+    color: #fff;
+    text-decoration: none;
+}
