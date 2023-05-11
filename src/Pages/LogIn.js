@@ -1,11 +1,17 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import styles from "../Css/Login.css"
 import React, { useEffect, useState } from 'react';
+import styles from "../Css/Login.css"
+import { Link, useLocation } from "react-router-dom";
 
 
 export const LogIn = () => {
+    
+    const location = useLocation();
+
+    const isHome = location.pathname === "/";
+
     return (
         <Container fluid="xs" className="align-items-center pt-5 ">
             <Row className="mb-5">
@@ -42,7 +48,7 @@ export const LogIn = () => {
                             <Button className="loginButton lg mx-0" type="submit">
                             Prijavi se
                         </Button>
-                        <p className="text-center">Nemaš račun?<Button variant="link" href="#"> Registriraj se</Button></p>
+                        <p className="text-center">Nemaš račun?<Button variant="link" as={Link} to="/Register" onClick={() => location.pathname.includes("/Register")}> Registriraj se</Button></p>
                         </div>
                     </Form>
                 </div>

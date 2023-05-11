@@ -7,6 +7,7 @@ import { AboutUs } from "./Pages/AboutUs";
 import { Activities } from "./Pages/Activities";
 import { NavigationBar } from "./NavigationBar";
 import { LogIn } from "./Pages/LogIn";
+import {Register} from "./Pages/Register"
 import { useState } from "react";
 import "./Css/fonts.css"
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/Activities' element={<Activities />} />
           <Route path='/AboutUs' element={<AboutUs />} />
           <Route path='/LogIn' element={<LogIn />} />
+          <Route path='/Register' element={<Register />} />
         </Routes>
       </Router>
     </div>
