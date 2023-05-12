@@ -7,13 +7,15 @@ import { BsFlag,BsCalendarEvent,BsClock,BsPeople } from "react-icons/bs";
 import styles from "../Css/Activities.css"
 import Accordion from 'react-bootstrap/Accordion';
 import Dropdown from 'react-bootstrap/Dropdown';
+import {isAuthenticated} from "../UserAuth";
+import {Footer} from "../Footer";
 
 
 export const Activities = () => {
-    
+    const isLoggedin = isAuthenticated();
 
-    return (
-        <>
+    return ( isLoggedin ?
+            <>
             <Container >
                 <Row>
                     <Col>
@@ -60,20 +62,20 @@ export const Activities = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
-                           
+
                         </Row>
                     </Container>
                     <hr/>
                     </Col>
-                    
+
                 </Row>
                 <Row xs={1} md={2}  className='align-items-center mx-3 px-1 py-5 g-3'>
-                    
+
                     {podaci.termini.map((item,index) => {
                         return(
-                            
+
                         <Col key={index} className='mx-0'>
-                            
+
                             <Accordion defaultActiveKey="0">
                                 <Accordion.Item eventKey={(index-1).toString()} className='px-0 mx-auto my-3'>
                                 <Accordion.Header>
@@ -102,16 +104,16 @@ export const Activities = () => {
                                                     <hr/>
                                                     <Container>
                                                         <Row>
-                                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1169.3779921717487!2d15.934835296499244!3d45.80594808601676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6cecd0e7669%3A0x4a22a0cb02b9fdfa!2sSportski%20centar%20Concordia!5e0!3m2!1shr!2shr!4v1683767741883!5m2!1shr!2shr" 
-                                                            width="250" 
-                                                            height="150" 
-                                                            allowfullscreen="" 
-                                                            loading="lazy" 
+                                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1169.3779921717487!2d15.934835296499244!3d45.80594808601676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6cecd0e7669%3A0x4a22a0cb02b9fdfa!2sSportski%20centar%20Concordia!5e0!3m2!1shr!2shr!4v1683767741883!5m2!1shr!2shr"
+                                                            width="250"
+                                                            height="150"
+                                                            allowfullscreen=""
+                                                            loading="lazy"
                                                             referrerpolicy="no-referrer-when-downgrade">
                                                             </iframe>
                                                         </Row>
                                                         <Row>
-                                                            
+
                                                         </Row>
                                                     </Container>
                                             </Accordion.Body>
@@ -125,17 +127,26 @@ export const Activities = () => {
                             </Accordion>
                         </Col>
                         )
-                        
+
                     })}
-                    
-                    
-                    
+
+
+
                 </Row>
-                
+
                 <Row></Row>
-                
-            </Container> 
+            </Container>
+                <Footer/>
         </>
+            : <>
+            <Container >
+                <Row >
+                    <Col className="mb-5"><h1 className="text-center unothorizedAccess">Prijavi se da pristupiš ovoj stranici</h1></Col>
+                </Row>
+            </Container>
+                <Footer/>
+            </>
+
     );
 }
 

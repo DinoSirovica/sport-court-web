@@ -65,3 +65,15 @@ button {
 .home {
     background-color: transparent;
 }
+
+.profileButton{
+    background-color: transparent!important;
+    border: none!important;
+    margin-left: 15px!important;
+}
+.dropdownMenu{
+    color: black;
+}
+.dropdownMenu:hover{
+    color: #0F403F;
+}

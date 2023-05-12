@@ -6,6 +6,9 @@ import React, { useEffect, useState } from 'react';
 import styles from "../Css/Login.css"
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link, useLocation } from "react-router-dom";
+import {Footer} from "../Footer";
+import {defaultImageData, User} from "../Models";
+import axios from "axios";
 
 export function Register() {
   
@@ -14,16 +17,54 @@ export function Register() {
   const isHome = location.pathname === "/";
   
     const [validated, setValidated] = useState(false);
-  
+    const [username, setUsername] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordRepeat, setPasswordRepeat] = useState('');
+
     const handleSubmit = (event) => {
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
+        const form = event.currentTarget;
+        console.log(form.checkValidity());
+      if (form.checkValidity() === true) {
         event.stopPropagation();
       }
   
       setValidated(true);
+      sendUser(event);
     };
+
+    function sendUser(event){
+        if(password !== passwordRepeat) {
+            alert("Passwords do not match!");
+        }
+        else{
+            event.preventDefault();
+            hashPassword(password).then((result) => {
+                const user = new User(username, firstname, lastname, phoneNumber, email,result );
+                axios.post("http://localhost:8080/user/save", user, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        console.log('Models created!');
+                        window.location.href = "/Login";
+                    })
+                    .catch(error => {
+                        console.log('Error creating user:', error);
+                    });
+            });
+        }
+    }
+
+    function hashPassword(password) {
+        return crypto.subtle.digest("SHA-512", new TextEncoder("utf-8").encode(password)).then(buf => {
+            return Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
+        });
+    }
     
 
   return (
@@ -40,14 +81,15 @@ export function Register() {
             <Col ></Col>
             <Col xs={7} md={6}>
                 <div>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group  controlId="validationCustom01">
                           <Form.Label>Ime</Form.Label>
                           <Form.Control
                             required
                             type="text"
-                            placeholder="First name"
-                            defaultValue="Mark"
+                            placeholder="Pero"
+                            value={firstname}
+                            onChange={(e) => setFirstname(e.target.value)}
                           />
                           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                         </Form.Group>
@@ -56,8 +98,9 @@ export function Register() {
                             <Form.Control
                               required
                               type="text"
-                              placeholder="Last name"
-                              defaultValue="Otto"
+                              placeholder="Peric"
+                              value={lastname}
+                                onChange={(e) => setLastName(e.target.value)}
                             />
                           </Form.Group>
                             <Form.Group  controlId="validationCustom03">
@@ -65,10 +108,22 @@ export function Register() {
                             <Form.Control
                               required
                               type="text"
-                              placeholder="Last name"
-                              defaultValue="Otto"
+                              placeholder="1122334455"
+                              value={phoneNumber}
+                              onChange={(e) => setPhoneNumber(e.target.value)}
                             />
                           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group  controlId="validationCustom03">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                required
+                                type="email"
+                                placeholder="pero.peric@primjer.hr"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group controlId="validationCustomUsername">
                           <Form.Label>Korisničko ime</Form.Label>
@@ -76,9 +131,11 @@ export function Register() {
                             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                             <Form.Control
                               type="text"
-                              placeholder="Username"
+                              placeholder="pero123"
                               aria-describedby="inputGroupPrepend"
                               required
+                              value={username}
+                              onChange={(e) => setUsername(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
                               Please choose a username.
@@ -87,17 +144,28 @@ export function Register() {
                         </Form.Group>
                         <Form.Group className="mb-3" >
                             <Form.Label>Lozinka</Form.Label>
-                            <Form.Control type="password" placeholder="e.g. 123456" />
+                            <Form.Control
+                                type="password"
+                                placeholder="123456"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" >
                             <Form.Label>Ponovi lozinku</Form.Label>
-                            <Form.Control type="password" placeholder="e.g. 123456" />
+                            <Form.Control
+                                type="password"
+                                placeholder="123456"
+                                required
+                                value={passwordRepeat}
+                                onChange={(e) => setPasswordRepeat(e.target.value)}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Check
                               required
                               name="terms"
-                              label="Agree to terms and conditions"                              
+                              label="Prihvaćam pravila privatnosti i uvjete korištenja"
                               feedbackType="invalid"
                               id="validationFormik0"
                             />
@@ -115,6 +183,7 @@ export function Register() {
             
             </Row>
             <Row></Row>
+           <Footer />
       </Container>
     </>
   );

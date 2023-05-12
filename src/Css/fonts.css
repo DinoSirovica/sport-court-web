@@ -18,3 +18,10 @@ p {
 ul li a {
     color: #fff;
   }
+
+.unothorizedAccess{
+    font-size: 30px;
+    margin-top: 10em;
+    margin-bottom: 9em;
+    color: grey;
+}

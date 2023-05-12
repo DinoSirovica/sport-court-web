@@ -27,7 +27,7 @@ export const Home = () => {
     }
 
     return (
-        <header>
+        <div>
             <div class="hero-container">
                 <div class="hero-image">
                     <div class="hero-image-light"></div>
@@ -154,6 +154,6 @@ export const Home = () => {
                     </Row>
                 </Container>
             </footer>
-        </header>
+        </div>
     );
 }

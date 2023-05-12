@@ -10,6 +10,7 @@ import { LogIn } from "./Pages/LogIn";
 import {Register} from "./Pages/Register"
 import { useState } from "react";
 import "./Css/fonts.css"
+import {Profile} from "./Pages/Profile";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/AboutUs' element={<AboutUs />} />
           <Route path='/LogIn' element={<LogIn />} />
           <Route path='/Register' element={<Register />} />
+          <Route path='/Profile' element={<Profile />} />
         </Routes>
       </Router>
     </div>
