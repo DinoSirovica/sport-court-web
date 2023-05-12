@@ -1,16 +1,16 @@
-import "./Css/App.css"
+import "./css/App.css"
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Home } from "./Pages/Home";
-import { AboutUs } from "./Pages/AboutUs";
-import { Activities } from "./Pages/Activities";
-import { NavigationBar } from "./NavigationBar";
-import { LogIn } from "./Pages/LogIn";
-import {Register} from "./Pages/Register"
+import { Home } from "./pages/Home";
+import { AboutUs } from "./pages/AboutUs";
+import { Activities } from "./pages/Activities";
+import { NavigationBar } from "./components/NavigationBar/NavigationBar";
+import { LogIn } from "./pages/LogIn";
+import {Register} from "./pages/Register"
 import { useState } from "react";
-import "./Css/fonts.css"
-import {Profile} from "./Pages/Profile";
+import "./css/fonts.css"
+import {Profile} from "./pages/Profile";
 
 function App() {
 
@@ -23,11 +23,11 @@ function App() {
         <NavigationBar currentRoute={currentRoute}/>
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/Activities' element={<Activities />} />
-          <Route path='/AboutUs' element={<AboutUs />} />
-          <Route path='/LogIn' element={<LogIn />} />
-          <Route path='/Register' element={<Register />} />
-          <Route path='/Profile' element={<Profile />} />
+          <Route path='/activities' element={<Activities />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/login' element={<LogIn />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
       </Router>
     </div>

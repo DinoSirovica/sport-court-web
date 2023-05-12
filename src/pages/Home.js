@@ -1,11 +1,11 @@
-import "../Css/Hero.css"
+import "../css/Hero.css"
 import { Container, Row, Col } from "react-bootstrap";
 import { BiFootball } from "react-icons/bi";
 import { HiArrowNarrowRight, HiCursorClick, HiUserGroup } from "react-icons/hi"
 import { BsFillCalendar2CheckFill } from "react-icons/bs"
-import "../Css/HomePage.css"
-import "../Css/fonts.css"
-import { SportButton } from '../Sport';
+import "../css/HomePage.css"
+import "../css/fonts.css"
+import { SportButton } from '../components/Sport/Sport';
 import { Link } from "react-router-dom";
 
 const Column = ({ icon, text, miniIcon, arrow }) => {
@@ -32,7 +32,7 @@ export const Home = () => {
                 <div class="hero-image">
                     <div class="hero-image-light"></div>
                     <div class="hero-image-dark"></div>
-                    <img src={require('../Images/hero.jpg')} alt="Hero" class="hero-image" />
+                    <img src={require('../images/hero.jpg')} alt="Hero" class="hero-image" />
 
                 </div>
                 <div class="hero-content">
@@ -85,43 +85,43 @@ export const Home = () => {
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/Nogomet.jpg')} altText="Nogomet" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/nogomet.jpg')} altText="Nogomet" onClick={handleFootballClick} />
                         </div>
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/kosarka.jpg')} altText="Košarka" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/kosarka.jpg')} altText="Košarka" onClick={handleFootballClick} />
                         </div>
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/badminton.jpg')} altText="Badminton" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/badminton.jpg')} altText="Badminton" onClick={handleFootballClick} />
                         </div>
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/odbojka.jpg')} altText="Odbojka" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/odbojka.jpg')} altText="Odbojka" onClick={handleFootballClick} />
                         </div>
                     </Col>
 
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/plivanje.jpg')} altText="Plivanje" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/plivanje.jpg')} altText="Plivanje" onClick={handleFootballClick} />
                         </div>
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/rukomet.jpg')} altText="Rukomet" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/rukomet.jpg')} altText="Rukomet" onClick={handleFootballClick} />
                         </div>
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/stolni.jpg')} altText="Stolni" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/stolni.jpg')} altText="Stolni" onClick={handleFootballClick} />
                         </div>
                     </Col>
                     <Col lg={3} md={6}>
                         <div>
-                            <SportButton image={require('../Images/vaterpolo.jpg')} altText="Vaterpolo" onClick={handleFootballClick} />
+                            <SportButton image={require('../images/vaterpolo.jpg')} altText="Vaterpolo" onClick={handleFootballClick} />
                         </div>
                     </Col>
                 </Row>

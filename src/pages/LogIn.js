@@ -2,11 +2,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useEffect, useState } from 'react';
-import styles from "../Css/Login.css"
+import styles from "../css/Login.css"
 import {Link, Navigate, useLocation} from "react-router-dom";
 import { SHA512 } from 'crypto-js';
 import axios from "axios";
-import {Footer} from "../Footer";
+import {Footer} from "../components/Footer/Footer";
+import {hashPassword} from "../util/password";
 
 
 
@@ -21,7 +22,7 @@ export const LogIn = () => {
 
             const handleSubmit = async (event) => {
                 event.preventDefault()
-                let hashedPassword = hashPassword(password).then((result) => {
+                hashPassword(password).then((result) => {
                     axios.post("http://localhost:8080/user/auth/login",{"username" : username, "password" : result} , {
                         headers: {
                             'Content-Type': 'application/json'
@@ -41,11 +42,6 @@ export const LogIn = () => {
                 );
 
             };
-    function hashPassword(password) {
-        return crypto.subtle.digest("SHA-512", new TextEncoder("utf-8").encode(password)).then(buf => {
-            return Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
-        });
-    }
 
     return (
         <Container fluid="xs" className="align-items-center pt-5 ">
@@ -83,7 +79,7 @@ export const LogIn = () => {
                             <Button className="loginButton lg mx-0" type="submit">
                             Prijavi se
                         </Button>
-                        <p className="text-center">Nemaš račun?<Button variant="link" as={Link} to="/Register" onClick={() => location.pathname.includes("/Register")}> Registriraj se</Button></p>
+                        <p className="text-center">Nemaš račun?<Button variant="link" as={Link} to="/register" onClick={() => location.pathname.includes("/Register")}> Registriraj se</Button></p>
                         </div>
                     </Form>
                 </div>

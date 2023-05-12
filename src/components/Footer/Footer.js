@@ -17,7 +17,7 @@ export const Footer = () => {
 
                             <Link className="link" to="/activities"> Aktivnosti </Link>
 
-                            <Link className="link" to="/aboutUS"> O nama </Link>
+                            <Link className="link" to="/about-us"> O nama </Link>
 
                         </ul>
                     </Col>

@@ -54,7 +54,7 @@ button {
 }
 
 .navbar-toggler-icon {
-    background-image: url('../Images/hambi.svg');
+    background-image: url('../../images/hambi.svg');
     background-size: cover;
     background-color: transparent;
     width: 30px;
