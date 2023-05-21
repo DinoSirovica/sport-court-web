@@ -1,29 +1,41 @@
-.dodajme{
-    background-Color:#1A6A69;
+.dodajme {
+    background-Color: #1A6A69;
     border: none;
     z-index: 1000;
     position: relative;
+    color:white;
+    text-decoration: none;
 }
-.dodajme:hover{
-    background-color:#F4A259;
+
+.dodajme:hover {
+    background-color: #F4A259;
     color: black;
-    
+
 }
 
 
-
-.accordion:hover .dodajme{
-    background-color:#F4A259;
+.accordion:hover .dodajme {
+    background-color: #F4A259;
     color: black;
 }
-.accordion-button{
-    margin:0;
+
+.accordion-button {
+    margin: 0;
     max-height: 50%;
 }
-.accordion-button:hover{
+
+.accordion-button:hover {
     border-radius: 0.5rem;
-    background-Color:#1A6A69;
+    background-Color: #1A6A69;
     color: white;
 }
 
 
+.accordion-button:not(.collapsed){
+    background-color: white;
+    color: black;
+}
+
+.accordion-button:not(.collapsed)::after{
+    background-image: none;
+}

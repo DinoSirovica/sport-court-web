@@ -1,28 +1,31 @@
-.loginButton{
-   background-color: #185558;
-   color:white;
-   border-radius: 1rem;
-   border: none;
+.loginButton {
+    background-color: #185558;
+    color: white;
+    border-radius: 1rem;
+    border: none;
 }
-.loginButton:hover{
+
+.loginButton:hover {
     background-color: #F4A259;
 }
 
-h2{
+h2 {
     text-align: center;
 }
-.googleButton{
-    border:2px solid black;
+
+.googleButton {
+    border: 2px solid black;
     border-radius: 1rem;
     color: black;
 }
-.googleButton:hover{
+
+.googleButton:hover {
     background-color: #185558;
-    color:white;
+    color: white;
     border-color: #185558;
 }
 
-.form-control{
+.form-control {
     border-radius: 1rem;
 }
 
