@@ -10,7 +10,7 @@ import {LogIn} from "./pages/LogIn";
 import {Register} from "./pages/Register"
 import {useState} from "react";
 import "./css/fonts.css"
-import {LobbyCreator} from "./Pages/LobbyCreator";
+import {LobbyCreator} from "./pages/LobbyCreator";
 import {Profile} from "./pages/Profile";
 
 function App() {
