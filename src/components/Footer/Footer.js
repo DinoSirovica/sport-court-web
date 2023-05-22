@@ -8,7 +8,7 @@ export const Footer = () => {
                 <Row className="justify-content-md-center">
                     <Col md={6}>
                         <h5 className="footer-title">O nama</h5>
-                        <p>Ovo je platforma namjenjena </p>
+                        <p>Ovo je platforma namjenjena... </p>
                     </Col>
                     <Col md={6}>
                         <h5 className="footer-title">Navigacija</h5>

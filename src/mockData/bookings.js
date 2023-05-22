@@ -17,8 +17,8 @@ export const bookingData={
             placeName:"Concordia",
             date:"19/07/2023",
             time:"18:00-19:00",
-            maxParticipants:4,
-            participants:[]
+            maxParticipants:8,
+            participants:["Đuro"]
         },
         {
             id:3,

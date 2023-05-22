@@ -2,7 +2,7 @@ import {Col, Container, Form, Row} from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import {Link, useLocation} from "react-router-dom";
-import "../Css/Activities.css"
+import "../css/Activities.css"
 import React from 'react';
 import { useState } from 'react';
 

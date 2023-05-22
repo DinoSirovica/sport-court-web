@@ -1,7 +1,7 @@
 import {Container, Nav, Navbar, NavLink} from "react-bootstrap";
 import {Link, useLocation} from "react-router-dom";
-import "./Css/Navigation.css"
-import "./Css/fonts.css"
+import "./css/Navigation.css"
+import "./css/fonts.css"
 
 export const NavigationBar = ({}) => {
     const location = useLocation();
