@@ -9,7 +9,7 @@ export const NavigationBar = ({}) => {
     const isHome = location.pathname === "/";
 
     return (
-        <header>
+
             <Navbar className={`navbar ${isHome ? "home" : ""}`} collapseOnSelect expand="sm">
                 <Container>
                     <Navbar.Brand as={Link} to="/" isActive={() => location.pathname === "/"}
@@ -37,7 +37,7 @@ export const NavigationBar = ({}) => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </header>
+
 
     );
 }

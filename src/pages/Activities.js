@@ -6,26 +6,27 @@ import {isAuthenticated} from '../util/auth';
 import {Footer} from '../components/Footer/Footer';
 import {ActivityBlueprint} from '../ActivityBlueprint';
 import {bookingData} from '../mockData/bookings.js';
+import {Link, useLocation} from "react-router-dom";
+
 
 export const Activities = () => {
     const isLoggedin = isAuthenticated();
-    const [visibleCount, setVisibleCount] = useState(2); // Number of initially visible ActivityBlueprints
+    const [visibleCount, setVisibleCount] = useState(3); // Number of initially visible ActivityBlueprints
 
+    const location = useLocation();
     const handleToggleVisibility = () => {
-        setVisibleCount((prevVisibleCount) => (prevVisibleCount === 2 ? bookingData.bookings.length : 2));
+        setVisibleCount((prevVisibleCount) => (prevVisibleCount === 3 ? bookingData.bookings.length : 3));
     };
 
     if (!isLoggedin) {
-        // Remove the exclamation mark if you want to test the Aktivnosti page
+        // Add the exclamation mark if you want to go to Aktivnosti page
         return (
             <>
                 <Container>
                     <Row>
                         <Col>
                             <Container>
-                                <Row>
-                                    <h4>Aktivnosti</h4>
-                                </Row>
+
                                 <Row>
                                     <Col>
                                         <Dropdown>
@@ -43,7 +44,7 @@ export const Activities = () => {
                                     <Col>
                                         <Dropdown>
                                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                Svi Sportovi
+                                                Sportovi
                                             </Dropdown.Toggle>
 
                                             <Dropdown.Menu>
@@ -56,7 +57,7 @@ export const Activities = () => {
                                     <Col>
                                         <Dropdown>
                                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                Sve sportske dvorane
+                                                Sportske dvorane
                                             </Dropdown.Toggle>
 
                                             <Dropdown.Menu>
@@ -65,22 +66,28 @@ export const Activities = () => {
                                                 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
+
                                     </Col>
-                                    <Col></Col>
+                                    <Col>
+                                        <Button className="btn-primary dropdown" variant="link" as={Link} to="/lobbyCreator"
+                                                onClick={() => location.pathname.includes("/LobbyCreator")}>
+                                            Nova aktivnost
+                                        </Button>
+                                    </Col>
                                 </Row>
                             </Container>
                             <hr/>
                         </Col>
                     </Row>
-                    <Row xs={1} md={2} className="align-items-center mx-3 px-1 py-5 g-3">
+                    <Row xs={1} md={3} className="align-items-center mx-3 px-1 py-5 g-3">
                         {bookingData.bookings.slice(0, visibleCount).map((item, index) => (
                             <ActivityBlueprint item={item} index={index}/>
                         ))}
                     </Row>
-                    {bookingData.bookings.length > 2 && (
+                    {bookingData.bookings.length > 3 && (
                         <Row className="text-center">
                             <Button className="showMorePosition" variant="primary" onClick={handleToggleVisibility}>
-                                {visibleCount === 2 ? 'Show More' : 'Show Less'}
+                                {visibleCount === 3 ? 'Show More' : 'Show Less'}
                             </Button>
                         </Row>
                     )}

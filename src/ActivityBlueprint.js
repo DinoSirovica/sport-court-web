@@ -7,13 +7,12 @@ import React from "react";
 export const ActivityBlueprint = ({item, index}) => {
     return (
         <Col key={index} className='mx-0'>
-
             <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey={(index - 1).toString()} className='px-0 mx-auto my-3'>
                     <Accordion.Header>
-                        <Container>
+                        <Container className="cards">
                             <Row>
-                                <Col><p><b>{item.name}</b> - {item.sport}</p></Col>
+                                <Col><h4><b>{item.name}</b> - {item.sport}</h4></Col>
                             </Row>
                             <Row className='align-items-center mx-auto my-3'>
                                 <Col>
@@ -52,9 +51,7 @@ export const ActivityBlueprint = ({item, index}) => {
                                     </Container>
                                 </Accordion.Body>
                             </Row>
-                            <Row>
-                                <Button className='mx-0 dodajme'>Dodaj me</Button>
-                            </Row>
+
                         </Container>
                     </Accordion.Header>
                 </Accordion.Item>

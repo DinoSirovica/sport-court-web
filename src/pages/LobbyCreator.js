@@ -1,5 +1,4 @@
 import {Col, Container, Form, Row} from "react-bootstrap";
-import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import {Link, useLocation} from "react-router-dom";
 import "../css/Activities.css"
@@ -21,8 +20,8 @@ export const LobbyCreator = () => {
             <Row>
 
                 <Col>
-                    <Button className='mx-0 dodajme' variant="link" as={Link} to="/Activities"
-                            onClick={() => location.pathname.includes("/Activities")}>Nazad
+                    <Button className='mx-0 dodajme' variant="link" as={Link} to="/activities"
+                            onClick={() => location.pathname.includes("/activities")}>Nazad
                     </Button>
                 </Col>
                 <Col>

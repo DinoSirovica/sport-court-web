@@ -11,8 +11,12 @@ h3{
     font-style: bold;
     margin-bottom: 40px;
 }
+h4{
+    font-size: 16px;
+}
+
 p {
-    font-size: 20px;
+    font-size: 14px;
 }
 
 ul li a {
