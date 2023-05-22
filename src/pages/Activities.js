@@ -1,18 +1,22 @@
 import React, {useState} from 'react';
-import {Container, Row, Col} from "react-bootstrap";
-import "../css/Activities.css";
+import {Container, Row, Col, Button} from 'react-bootstrap';
+import '../css/Activities.css';
 import Dropdown from 'react-bootstrap/Dropdown';
-import {isAuthenticated} from "../util/auth";
-import {Footer} from "../components/Footer/Footer";
-import {ActivityBlueprint} from "../ActivityBlueprint";
-
-import {bookingData} from "../mockData/bookings.js";
-
+import {isAuthenticated} from '../util/auth';
+import {Footer} from '../components/Footer/Footer';
+import {ActivityBlueprint} from '../ActivityBlueprint';
+import {bookingData} from '../mockData/bookings.js';
 
 export const Activities = () => {
     const isLoggedin = isAuthenticated();
+    const [visibleCount, setVisibleCount] = useState(2); // Number of initially visible ActivityBlueprints
+
+    const handleToggleVisibility = () => {
+        setVisibleCount((prevVisibleCount) => (prevVisibleCount === 2 ? bookingData.bookings.length : 2));
+    };
+
     if (!isLoggedin) {
-        //makni uskličnik ako želiš testirati Aktivnosti page
+        // Remove the exclamation mark if you want to test the Aktivnosti page
         return (
             <>
                 <Container>
@@ -62,22 +66,24 @@ export const Activities = () => {
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </Col>
-                                    <Col>
-
-                                    </Col>
-
+                                    <Col></Col>
                                 </Row>
                             </Container>
                             <hr/>
                         </Col>
-
                     </Row>
-                    <Row xs={1} md={2} className='align-items-center mx-3 px-1 py-5 g-3'>
-                        {bookingData.bookings.map((item, index) => (
+                    <Row xs={1} md={2} className="align-items-center mx-3 px-1 py-5 g-3">
+                        {bookingData.bookings.slice(0, visibleCount).map((item, index) => (
                             <ActivityBlueprint item={item} index={index}/>
                         ))}
                     </Row>
-
+                    {bookingData.bookings.length > 2 && (
+                        <Row className="text-center">
+                            <Button className="showMorePosition" variant="primary" onClick={handleToggleVisibility}>
+                                {visibleCount === 2 ? 'Show More' : 'Show Less'}
+                            </Button>
+                        </Row>
+                    )}
                 </Container>
                 <Footer/>
             </>
@@ -87,15 +93,15 @@ export const Activities = () => {
             <>
                 <Container>
                     <Row>
-                        <Col className="mb-5"><h1 className="text-center unothorizedAccess">Prijavi se da pristupiš ovoj
-                            stranici</h1></Col>
+                        <Col className="mb-5">
+                            <h1 className="text-center unothorizedAccess">
+                                Prijavi se da pristupiš ovoj stranici
+                            </h1>
+                        </Col>
                     </Row>
                 </Container>
                 <Footer/>
             </>
-
         );
     }
-
-}
-
+};

@@ -39,3 +39,25 @@
 .accordion-button:not(.collapsed)::after{
     background-image: none;
 }
+
+.btn-primary, .btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #1A6A69;
+    --bs-btn-border-color: #1A6A69;
+    --bs-btn-hover-color: #fffff;
+    --bs-btn-hover-bg: #F4A259;
+    --bs-btn-hover-border-color: #F4A259;
+    --bs-btn-focus-shadow-rgb: none;
+    --bs-btn-active-color: #fffff;
+    --bs-btn-active-bg: #F4A259;
+    --bs-btn-active-border-color: #F4A259;
+}
+
+.showMorePosition{
+    margin-bottom: 20px;
+    width: 200px;
+    position: relative;
+    left: 3%;
+
+
+}
