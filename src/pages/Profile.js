@@ -4,11 +4,6 @@ import {User} from "../components/Models/Models";
 import axios from "axios";
 import {Footer} from "../components/Footer/Footer";
 import {Col, Container, Row} from "react-bootstrap";
-import Accordion from "react-bootstrap/Accordion";
-import {BsCalendarEvent, BsClock, BsFlag, BsPeople} from "react-icons/bs";
-import Button from "react-bootstrap/Button";
-import bookingData from "../mockData/bookings";
-import RecipeReviewCard, {ProfileDetail} from "../components/Profile/ProfileDetail";
 import ProfileDetailCard from "../components/Profile/ProfileDetail";
 
 export const Profile = () => {
@@ -42,7 +37,6 @@ export const Profile = () => {
     }
 
     return (<>
-            <h1 class="text-center pt-5">Profile Page</h1>
             <Row xs={1} md={2}  className='align-items-center mx-3 px-1 py-5 g-3'>
                 <Col key={1} className='mx-0'>
                     <ProfileDetailCard user={user} />

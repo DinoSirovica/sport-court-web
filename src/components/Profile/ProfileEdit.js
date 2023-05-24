@@ -1,26 +1,26 @@
-import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import * as React from "react";
-import {TextField} from "@mui/material";
+import {TextField, ThemeProvider} from "@mui/material";
 import {useEffect} from "react";
 import Button from "@mui/material/Button";
 import {Col, Row} from "react-bootstrap";
-import Avatar from "@mui/material/Avatar";
-import {getImageFromBase64} from "../../util/helper";
 import {AvatarImage} from "./AvatarImage";
+import "../../css/fonts.css";
+import theme from "../../util/ColorPallet";
 
-export const ProfileEdit = ({ user }) => {
-        const [image, setImage] = React.useState(user.imageData);
-        const [firstname, setFirstname] = React.useState(user.firstname);
-        const [lastname, setLastname] = React.useState(user.lastname);
-        const [email, setEmail] = React.useState(user.email);
-        const [phone, setPhone] = React.useState(user.phoneNumber);
 
-        //todo Add updating user data to database
-        useEffect(() => {
-            return () => {
-            };
-        }, []);
+export const ProfileEdit = ({user}) => {
+    const [image, setImage] = React.useState(user.imageData);
+    const [firstname, setFirstname] = React.useState(user.firstname);
+    const [lastname, setLastname] = React.useState(user.lastname);
+    const [email, setEmail] = React.useState(user.email);
+    const [phone, setPhone] = React.useState(user.phoneNumber);
+
+    //todo Add updating user data to database
+    useEffect(() => {
+        return () => {
+        };
+    }, []);
 
     const handleFirstnameChange = (event) => {
         setFirstname(event.target.value);
@@ -35,23 +35,46 @@ export const ProfileEdit = ({ user }) => {
         setPhone(event.target.value);
     };
 
-        return (
-            <div>
+    return (
+        <div>
+            <ThemeProvider theme={theme}>
                 <CardContent>
                     <Row>
                         <Col key={1} className='mx-0 text-center'>
                             <AvatarImage image={image} setImage={setImage}/>
-                            <TextField className={"w-100 mb-2"} id="outlined-basic" label="Ime" variant="outlined" value={firstname} onChange={handleFirstnameChange} />
-                            <TextField className={"w-100 mb-2"} id="outlined-basic" label="Prezime" variant="outlined" value={lastname} onChange={handleLastnameChange} />
-                            <TextField className={"w-100 mb-2"} id="outlined-basic" label="Email" variant="outlined" value={email} onChange={handleEmailChange}/>
-                            <TextField className={"w-100 mb-2"} id="outlined-basic" label="Broji telefona" variant="outlined" value={phone} onChange={handlePhoneChange}/>
-                            <Button variant="contained" onClick={() => console.log(firstname)}>
-                                Ispis
+                            <TextField fullWidth focused color={"secondary"} className={" mb-2"} id="outlined-basic"
+                                       label="Ime" variant="outlined" value={firstname} onChange={handleFirstnameChange}
+                                       InputProps={{
+                                           style: {color: '#fff'},
+                                       }}/>
+                            <TextField fullWidth focused color={"secondary"} className={" mb-2"} id="outlined-basic"
+                                       label="Prezime" variant="outlined" value={lastname}
+                                       onChange={handleLastnameChange}
+                                       InputProps={{
+                                           style: {color: '#fff'},
+                                       }}/>
+                            <TextField fullWidth focused color={"secondary"} className={" mb-2"} id="outlined-basic"
+                                       label="Email" variant="outlined" value={email} onChange={handleEmailChange}
+                                       InputProps={{
+                                           style: {color: '#fff'},
+                                       }}/>
+                            <TextField fullWidth focused color={"secondary"} className={"mb-2"} id="outlined-basic"
+                                       label="Broji telefona" variant="outlined" value={phone}
+                                       onChange={handlePhoneChange}
+                                       InputProps={{
+                                           style: {color: '#fff',},
+                                       }}/>
+                            <Button className={"mb-2"} fullWidth color={"secondary"} disableRipple variant="contained" onClick={() => console.log(firstname)}>
+                               Promijeni lozinku
+                            </Button>
+                            <Button className={"mb-2"} fullWidth color={"secondary"} disableRipple variant="contained" onClick={() => console.log(lastname)}>
+                                Deaktiviraj račun
                             </Button>
                         </Col>
                     </Row>
                 </CardContent>
-            </div>
-        );
-    };
+            </ThemeProvider>
+        </div>
+    );
+};
 

@@ -50,12 +50,13 @@ export function AvatarImage({ image , setImage }) {
                                         className="overlay"
                                         style={{
                                             position: 'relative',
-                                            top: -115,
+                                            top: -116,
                                             left: 0,
                                             borderRadius: '50%',
                                             width: '100%',
                                             height: '100%',
                                             background: 'rgba(0, 0, 0, 0.5)',
+                                            cursor: 'pointer',
                                         }}>
                                     <UploadIcon
                                         sx={{color:"white", fontSize:"40px",position: 'relative', top: '25%'}}/>

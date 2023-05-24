@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import type {User} from "../Models/Models";
 import {getImageFromBase64} from "../../util/helper";
 import {ProfileEdit} from "./ProfileEdit";
+import "../../css/Profile/Profile.css";
+import "../../css/fonts.css";
 
 export const ProfileDetailExpend = styled((props) => {
     const { expand, ...other } = props;
@@ -34,34 +36,53 @@ export default function ProfileDetailCard({ user }: { user: User }) {
 
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card className={"profile-card-body"} sx={{ maxWidth: 326 }}>
             <CardMedia
                 component="img"
-                height="194"
+                height="320"
                 image={getImageFromBase64(user.imageData)}
                 alt="Paella dish"
+                sx={{
+                    borderBottomLeftRadius: "10px",
+                    borderBottomRightRadius: "10px",
+                }}
             />
-            <CardContent>
-                <Avatar sx={{}} src={getImageFromBase64(user.imageData)} aria-label="recipe"></Avatar>
-                <Typography variant="h5" color="text.primary">
+            <Avatar sx={{
+                width: "110px",
+                height: "110px",
+                position: "relative",
+                top: "-40px",
+                left: "33%",
+            }} src={getImageFromBase64(user.imageData)} aria-label="recipe">
+            </Avatar>
+            <CardContent className={"pt-0"}
+            sx={{
+                position: "relative",
+                top: "-30px",
+            }}>
+                <Typography variant="h5">
                     {user.username}
                 </Typography>
-                <Typography variant="body1" color="text.secondary">
+                <Typography variant="body1" >
                     {user.firstname} {user.lastname}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing>
+            <CardActions disableSpacing sx={{
+                position: "relative",
+                top: "-30px",
+                right: "112px",
+            }}>
                 <ProfileDetailExpend
                     expand={expanded}
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <Button variant="contained">{editButton}</Button>
+                    <Button disableRipple className={"button-profile"} variant="contained" >{editButton}</Button>
                 </ProfileDetailExpend>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <ProfileEdit user={user} />
+                <ProfileEdit user={user}/>
 
             </Collapse>
         </Card>
