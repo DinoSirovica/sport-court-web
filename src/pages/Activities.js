@@ -18,8 +18,7 @@ export const Activities = () => {
         setVisibleCount((prevVisibleCount) => (prevVisibleCount === 3 ? bookingData.bookings.length : 3));
     };
 
-    if (!isLoggedin) {
-        // Add the exclamation mark if you want to go to Aktivnosti page
+    if (isLoggedin) {
         return (
             <>
                 <Container>

@@ -1,0 +1,6 @@
+.on-icon-hover :hover{
+    background-color: #1da1f2;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+
+}

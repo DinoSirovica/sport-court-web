@@ -14,31 +14,32 @@ export const LobbyCreator = () => {
 
     const handleCityChange = (event) => {
         setCity(event.target.value);
+    }
+        return(
+            <Container>
+                <Row>
 
-    return(
-        <Container>
-            <Row>
-
-                <Col>
-                    <Button className='mx-0 dodajme' variant="link" as={Link} to="/activities"
-                            onClick={() => location.pathname.includes("/activities")}>Nazad
-                    </Button>
-                </Col>
-                <Col>
-                    <input type={"text"} placeholder="Unesi naslov"/>
-                </Col>
-                <Col>
-                    <Form.Label>Mesto</Form.Label>
-                    <Form.Select onChange={handleCityChange}>
-                        <option value="">Izaberi mesto</option>
-                        <option value="Beograd">Beograd</option>
-                        <option value="Novi Sad">Novi Sad</option>
-                        <option value="Niš">Niš</option>
-                    </Form.Select>
-                </Col>
+                    <Col>
+                        <Button className='mx-0 dodajme' variant="link" as={Link} to="/activities"
+                                onClick={() => location.pathname.includes("/activities")}>Nazad
+                        </Button>
+                    </Col>
+                    <Col>
+                        <input type={"text"} placeholder="Unesi naslov"/>
+                    </Col>
+                    <Col>
+                        <Form.Label>Mesto</Form.Label>
+                        <Form.Select onChange={handleCityChange}>
+                            <option value="">Izaberi mjesto</option>
+                            <option value="Beograd">Beograd</option>
+                            <option value="Novi Sad">Novi Sad</option>
+                            <option value="Niš">Niš</option>
+                        </Form.Select>
+                    </Col>
 
 
-            </Row>
-        </Container>
-    );
-}}
+                </Row>
+            </Container>
+        );
+    }
+export default LobbyCreator;
