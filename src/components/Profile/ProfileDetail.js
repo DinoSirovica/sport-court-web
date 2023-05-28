@@ -9,11 +9,13 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import type {User} from "../Models/Models";
 import {getImageFromBase64} from "../../util/helper";
 import {ProfileEdit} from "./ProfileEdit";
 import "../../css/Profile/Profile.css";
 import "../../css/fonts.css";
+import {updateUser} from "../../util/apiRequestHelper";
+import {useRef, useState} from "react";
+import User from "../Models/Models";
 
 export const ProfileDetailExpend = styled((props) => {
     const { expand, ...other } = props;
@@ -25,15 +27,39 @@ export const ProfileDetailExpend = styled((props) => {
     }),
 }));
 
-export default function ProfileDetailCard({ user }: { user: User }) {
-    const [expanded, setExpanded] = React.useState(false);
-    const [editButton, setEditButton] = React.useState("Edit");
+export default function ProfileDetailCard({ user, userUpdate }: { user: User }) {
+    const [expanded, setExpanded] = useState(false);
+    const [editButton, setEditButton] = useState("Edit");
+    const [isChanged, setIsChanged] = useState(true);
+    const [newUser, setNewUser] = useState(null);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-        editButton ==="Edit" ? setEditButton("Save") : setEditButton("Edit");
+    const editRef = useRef(null);
+
+    // Method to call the childMethod
+    const getEditValues = () => {
+        if (editRef.current) {
+            const temp = editRef.current.getValues();
+            const user = new User(temp.id,temp.username,temp.firstname,temp.lastname,temp.phoneNumber,temp.email,temp.password,temp.role,temp.imageData)
+            setNewUser(user);
+            setIsChanged(editRef.current.getChange());
+        }
     };
 
+
+    const handleExpandClick = async () => {
+        setExpanded(!expanded);
+
+        if (editButton === "Edit") {
+            setEditButton("Save");
+        } else {
+            setEditButton("Edit");
+            getEditValues();
+            if (isChanged) {
+                userUpdate(await updateUser(user));
+                setIsChanged(false);
+            }
+        }
+    };
 
     return (
         <Card className={"profile-card-body"} sx={{ maxWidth: 326 }}>
@@ -56,10 +82,10 @@ export default function ProfileDetailCard({ user }: { user: User }) {
             }} src={getImageFromBase64(user.imageData)} aria-label="recipe">
             </Avatar>
             <CardContent className={"pt-0"}
-            sx={{
-                position: "relative",
-                top: "-30px",
-            }}>
+                         sx={{
+                             position: "relative",
+                             top: "-30px",
+                         }}>
                 <Typography variant="h5">
                     {user.username}
                 </Typography>
@@ -82,7 +108,7 @@ export default function ProfileDetailCard({ user }: { user: User }) {
                 </ProfileDetailExpend>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <ProfileEdit user={user}/>
+                <ProfileEdit user={user} ref={editRef}/>
 
             </Collapse>
         </Card>

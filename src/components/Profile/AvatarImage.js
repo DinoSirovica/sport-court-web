@@ -1,23 +1,25 @@
 import {useRef, useState} from "react";
 import Avatar from "@mui/material/Avatar";
-import {getImageFromBase64} from "../../util/helper";
+import {encodeImageToBase64, getImageFromBase64} from "../../util/helper";
 import "../../css/Profile/Profile.css"
-import {Icon} from "@mui/material";
 import UploadIcon from '@mui/icons-material/Upload';
 
-export function AvatarImage({ image , setImage }) {
-    const [imgfile, uploadimg] = useState(null);
+export function AvatarImage({ image , imageChange }) {
+    const [imgfile, uploading] = useState(null);
     const [isHovered, setIsHovered] = useState(false);
     const fileInputRef = useRef(null);
 
     useState(() => {
-        uploadimg(getImageFromBase64(image));
+        uploading( getImageFromBase64(image));
     }, []);
 
     const handleImageUpload = (e) => {
         if (e.target.files.length !== 0) {
             const newImage = URL.createObjectURL(e.target.files[0]);
-            uploadimg(newImage);
+            uploading(newImage);
+            encodeImageToBase64(e.target.files[0], function (encodedImage){
+                imageChange(encodedImage);
+            })
         }
     };
     const handlePreviewClick = () => {

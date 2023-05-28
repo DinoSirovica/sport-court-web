@@ -5,6 +5,9 @@ import "../../css/fonts.css"
 import {isAuthenticated, logOut} from "../../util/auth";
 import {Collapse, List, ListItemButton, ListItemText, ListSubheader, Menu, MenuItem} from "@mui/material";
 import {useState} from "react";
+import {getUserProfile} from "../../util/apiRequestHelper";
+import {getImageFromBase64} from "../../util/helper";
+import Avatar from "@mui/material/Avatar";
 
 
 export const NavigationBar = ({}) => {
@@ -12,6 +15,7 @@ export const NavigationBar = ({}) => {
 
   const isHome = location.pathname === "/";
   const isLogged = isAuthenticated();
+  const [image,setImage] = useState(null);
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -25,7 +29,15 @@ export const NavigationBar = ({}) => {
      window.location.pathname = "/Profile";
   };
 
+   const getImage = async () => {
+     if (isLogged) {
+       const user = await getUserProfile();
+       setImage(user.imageData);
+     }
+   }
+
    if(isLogged){
+     getImage();
      return (<>
        <Navbar className={`navbar ${isHome ? "home" : ""}`} collapseOnSelect expand="sm">
          <Container>
@@ -48,7 +60,8 @@ export const NavigationBar = ({}) => {
                      className={"profileButton"}
                      onClick={handleClick}
                  >
-                   Profil
+                   <Avatar src={getImageFromBase64(image)} aria-label="recipe">
+                   </Avatar>
                  </Button>
                  <Menu
                      id="demo-positioned-menu"

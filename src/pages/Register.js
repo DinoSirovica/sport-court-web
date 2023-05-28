@@ -44,7 +44,7 @@ export function Register() {
         else{
             event.preventDefault();
             hashPassword(password).then((result) => {
-                const user = new User(username, firstname, lastname, phoneNumber, email,result );
+                const user = new User(1,username, firstname, lastname, phoneNumber, email,result);
                 axios.post("http://localhost:8080/user/save", user, {
                     headers: {
                         'Content-Type': 'application/json'
