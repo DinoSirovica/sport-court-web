@@ -16,6 +16,7 @@ import "../../css/fonts.css";
 import {updateUser} from "../../util/apiRequestHelper";
 import {useRef, useState} from "react";
 import User from "../Models/Models";
+import {useMediaQuery, useTheme} from "@mui/material";
 
 export const ProfileDetailExpend = styled((props) => {
     const { expand, ...other } = props;
@@ -29,9 +30,11 @@ export const ProfileDetailExpend = styled((props) => {
 
 export default function ProfileDetailCard({ user, userUpdate }: { user: User }) {
     const [expanded, setExpanded] = useState(false);
-    const [editButton, setEditButton] = useState("Edit");
+    const [editButton, setEditButton] = useState("Uredi");
     const [isChanged, setIsChanged] = useState(true);
     const [newUser, setNewUser] = useState(null);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 
     const editRef = useRef(null);
 
@@ -49,10 +52,10 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
     const handleExpandClick = async () => {
         setExpanded(!expanded);
 
-        if (editButton === "Edit") {
-            setEditButton("Save");
+        if (editButton === "Uredi") {
+            setEditButton("Spremi");
         } else {
-            setEditButton("Edit");
+            setEditButton("Uredi");
             getEditValues();
             if (isChanged) {
                 userUpdate(await updateUser(user));
@@ -62,54 +65,73 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
     };
 
     return (
-        <Card className={"profile-card-body"} sx={{ maxWidth: 326 }}>
+        <Card
+            className={"profile-card-body"}
+            sx={{
+                maxWidth: 326,
+                flexDirection: isMobile ? "column" : "row",
+            }}
+        >
             <CardMedia
                 component="img"
                 height="320"
                 image={getImageFromBase64(user.imageData)}
                 alt="Paella dish"
                 sx={{
-                    borderBottomLeftRadius: "10px",
-                    borderBottomRightRadius: "10px",
+                    borderBottomLeftRadius: isMobile ? "10px" : "10px",
+                    borderBottomRightRadius: isMobile ? "10px" : "10px",
                 }}
             />
-            <Avatar sx={{
-                width: "110px",
-                height: "110px",
-                position: "relative",
-                top: "-40px",
-                left: "33%",
-            }} src={getImageFromBase64(user.imageData)} aria-label="recipe">
-            </Avatar>
-            <CardContent className={"pt-0"}
-                         sx={{
-                             position: "relative",
-                             top: "-30px",
-                         }}>
-                <Typography variant="h5">
-                    {user.username}
-                </Typography>
-                <Typography variant="body1" >
+            <Avatar
+                sx={{
+                    width: "110px",
+                    height: "110px",
+                    position: "relative",
+                    top: "-40px",
+                    textAlign: "center",
+                    margin: "auto",
+                }}
+                src={getImageFromBase64(user.imageData)}
+                aria-label="recipe"
+            ></Avatar>
+            <CardContent
+                className={"pt-0"}
+                sx={{
+                    position: "relative",
+                    top: "-30px",
+                    textAlign: "center",
+                }}
+            >
+                <Typography variant="h5">{user.username}</Typography>
+                <Typography variant="body1">
                     {user.firstname} {user.lastname}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing sx={{
-                position: "relative",
-                top: "-30px",
-                right: "112px",
-            }}>
+            <CardActions
+                disableSpacing
+                sx={{
+                    position: "relative",
+                    top: "-30px",
+                    textAlign: "center",
+                    display: "inline",
+                }}
+            >
                 <ProfileDetailExpend
                     expand={expanded}
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <Button disableRipple className={"button-profile"} variant="contained" >{editButton}</Button>
+                    <Button disableRipple sx={{
+                        width:"100%",
+                    }
+                    } className={"button-profile m-0"} variant="contained">
+                        {editButton}
+                    </Button>
                 </ProfileDetailExpend>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <ProfileEdit user={user} ref={editRef}/>
-
+                <ProfileEdit user={user} ref={editRef} />
             </Collapse>
         </Card>
     );

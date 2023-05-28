@@ -6,6 +6,7 @@ primary: {
     light: '#478787',
     main: '#1A6A69',
     dark: '#124a49',
+    darker: '#0c3333',
     contrastText: '#fff',
 },
 secondary: {

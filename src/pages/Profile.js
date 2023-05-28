@@ -1,36 +1,48 @@
 import React, {useEffect, useState} from "react";
 import {isAuthenticated} from "../util/auth";
 import {Footer} from "../components/Footer/Footer";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import ProfileDetailCard from "../components/Profile/ProfileDetail";
-import {getLobbiesForUser, getUserProfile, updateUser} from "../util/apiRequestHelper";
+import {getLobbiesForUser, getUserProfile} from "../util/apiRequestHelper";
+import {ProfileLobbyList} from "../components/Profile/Lobbies/ProfileLobbyList";
+import fonts from "../css/fonts.css";
+import {FriendList} from "../components/Profile/Friends/FriendList";
+
 
 export const Profile = () => {
-    const [user,setUser] = useState({});
-    const [lobbies,setLobbies] = useState({});
-
+    const [user, setUser] = useState({});
+    const [lobbies, setLobbies] = useState([]);
 
     useEffect(() => {
-        if (isAuthenticated()){
+        if (isAuthenticated()) {
             fetchData();
-        }
-        else{
+        } else {
             console.log("Not authenticated");
             window.location.href = "/Login";
         }
     }, []);
+
     const updateUserValues = (user) => {
         setUser(user);
-    }
+    };
+
     async function fetchData() {
-        setUser(await getUserProfile());
-        setLobbies(await getLobbiesForUser(user.id));
+        const userProfile = await getUserProfile();
+        setUser(await userProfile);
+        const userLobbies = await getLobbiesForUser(userProfile.id);
+        setLobbies(userLobbies);
     }
 
     return (<>
-            <Row xs={1} md={2}  className='align-items-center mx-3 px-1 py-5 g-3'>
+            <Row xs={1} sm={1} md={3}  className='align-top justify-content-around  px-5 py-5 g-3' style={{marginLeft: "10%"}}>
                 <Col key={1} className='mx-0'>
                     <ProfileDetailCard user={user} userUpdate={updateUserValues}/>
+                </Col>
+                <Col key={2} className='mx-0'>
+                    <ProfileLobbyList lobbies={lobbies} />
+                </Col>
+                <Col key={3} className='mx-0'>
+                    <FriendList user={user}/>
                 </Col>
             </Row>
             <Footer />

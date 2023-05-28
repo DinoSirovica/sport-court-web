@@ -6,6 +6,7 @@
 .button-profile{
     background-color: #F4A259 !important;
     color: black!important;
+    align-items: start;
 }
 .button-profile:hover{
     background-color: #CE894B !important;
@@ -13,4 +14,10 @@
 }
 .inputTextProfile{
     color: white!important;
+}
+.profileLobbyNameDiv{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 25px ;
+    border-bottom-right-radius: 25px ;
 }

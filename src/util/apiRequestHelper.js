@@ -9,8 +9,8 @@ export async function getUserProfile() {
 }
 
 export async function getLobbiesForUser(id){
-    // const response = await axios.get(API_URL + '/lobby/user/'+ id)
-    // return response.data;
+    const response = await axios.get(API_URL + '/lobby/user/'+ id)
+    return response.data;
 }
 
 export async function updateUser(user){

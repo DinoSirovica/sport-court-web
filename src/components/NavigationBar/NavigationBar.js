@@ -1,9 +1,9 @@
-import { Nav, Navbar, NavLink, NavDropdown, Container, Button, Form, Offcanvas } from "react-bootstrap";
+import { Nav, Navbar, NavLink, Container, Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import "./Navigation.css"
 import "../../css/fonts.css"
 import {isAuthenticated, logOut} from "../../util/auth";
-import {Collapse, List, ListItemButton, ListItemText, ListSubheader, Menu, MenuItem} from "@mui/material";
+import { Menu, MenuItem} from "@mui/material";
 import {useState} from "react";
 import {getUserProfile} from "../../util/apiRequestHelper";
 import {getImageFromBase64} from "../../util/helper";
