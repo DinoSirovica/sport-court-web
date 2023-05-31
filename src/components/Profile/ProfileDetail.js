@@ -31,11 +31,10 @@ export const ProfileDetailExpend = styled((props) => {
 export default function ProfileDetailCard({ user, userUpdate }: { user: User }) {
     const [expanded, setExpanded] = useState(false);
     const [editButton, setEditButton] = useState("Uredi");
-    const [isChanged, setIsChanged] = useState(true);
     const [newUser, setNewUser] = useState(null);
     const theme = useTheme();
+    const [isChanged, setIsChanged] = useState(true);
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
-
     const editRef = useRef(null);
 
     // Method to call the childMethod
@@ -70,6 +69,7 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
             sx={{
                 maxWidth: 326,
                 flexDirection: isMobile ? "column" : "row",
+                margin: "0 auto"
             }}
         >
             <CardMedia

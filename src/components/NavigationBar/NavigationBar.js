@@ -8,6 +8,7 @@ import {useState} from "react";
 import {getUserProfile} from "../../util/apiRequestHelper";
 import {getImageFromBase64} from "../../util/helper";
 import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
 
 
 export const NavigationBar = ({}) => {
@@ -56,6 +57,7 @@ export const NavigationBar = ({}) => {
                <NavLink className="text1" eventKey="2" as={Link} to="/activities" isActive={() => location.pathname.includes("/activities")}>Aktivnosti</NavLink>
                <NavLink className="text1" eventKey="3" as={Link} to="/about-us" isActive={() => location.pathname.includes("/about-us")}>O nama</NavLink>
                <div>
+                 <IconButton></IconButton>
                  <Button
                      className={"profileButton"}
                      onClick={handleClick}
@@ -78,7 +80,7 @@ export const NavigationBar = ({}) => {
                        horizontal: 'left',
                      }}
                  >
-                   <MenuItem className="dropdownMenu" as={Link} to="/profile" isActive={() => location.pathname.includes("/profile")}>Moj profil</MenuItem>
+                   <MenuItem className="dropdownMenu" onClick={handleClose} as={Link} to="/profile" isActive={() => location.pathname.includes("/profile")}>Moj profil</MenuItem>
                    <MenuItem onClick={logOut} className="dropdownMenu">Odjava</MenuItem>
                  </Menu>
                </div>

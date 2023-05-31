@@ -7,9 +7,12 @@ import {Col, Row} from "react-bootstrap";
 import Avatar from "@mui/material/Avatar";
 import {BsPlusLg} from "react-icons/bs";
 import {AllFriendCards} from "./AllFriendCards";
+import {useMediaQuery, useTheme} from "@mui/material";
 
 export function FriendList({ user }) {
     const [hover, setHover] = useState(false);
+    const themeMob = useTheme();
+    const isMobile = useMediaQuery(themeMob.breakpoints.down("sm"))
 
     const handleOnMouseEnter = () => {
         setHover(true);
@@ -19,9 +22,9 @@ export function FriendList({ user }) {
     };
 
     return (
-        <div style={{ maxWidth: "85%" }}>
+        <div style={{ maxWidth: isMobile ? "100%" :"85%" }}>
 
-            <h3 className={"pb-0 m-0"} style={{ textAlign: "left" }}>
+            <h3 className={"pb-0 m-0"} style={{ textAlign: isMobile ? "center" : "start" }}>
                 Prijatelji
             </h3>
             <Card

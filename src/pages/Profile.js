@@ -7,6 +7,7 @@ import {getLobbiesForUser, getUserProfile} from "../util/apiRequestHelper";
 import {ProfileLobbyList} from "../components/Profile/Lobbies/ProfileLobbyList";
 import fonts from "../css/fonts.css";
 import {FriendList} from "../components/Profile/Friends/FriendList";
+import {useMediaQuery, useTheme} from "@mui/material";
 
 
 export const Profile = () => {
@@ -34,11 +35,11 @@ export const Profile = () => {
     }
 
     return (<>
-            <Row xs={1} sm={1} md={3}  className='align-top justify-content-around  px-5 py-5 g-3' style={{marginLeft: "10%"}}>
-                <Col key={1} className='mx-0'>
+            <Row xs={1} sm={1} md={3}  className='align-top justify-content-around  px-5 py-5 g-3'>
+                <Col key={1} className='mx-0 p-0 text-center'>
                     <ProfileDetailCard user={user} userUpdate={updateUserValues}/>
                 </Col>
-                <Col key={2} className='mx-0'>
+                <Col key={2} className='mx-0 p-0'>
                     <ProfileLobbyList lobbies={lobbies} />
                 </Col>
                 <Col key={3} className='mx-0'>
