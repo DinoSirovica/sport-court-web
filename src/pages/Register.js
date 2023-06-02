@@ -2,12 +2,12 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import styles from "../css/Login.css"
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link, useLocation } from "react-router-dom";
 import {Footer} from "../components/Footer/Footer";
-import {defaultImageData, User} from "../components/Models/Models";
+import {User} from "../components/Models/Models";
 import axios from "axios";
 import {hashPassword} from "../util/password";
 

@@ -7,7 +7,6 @@ import {getLobbiesForUser, getUserProfile} from "../util/apiRequestHelper";
 import {ProfileLobbyList} from "../components/Profile/Lobbies/ProfileLobbyList";
 import fonts from "../css/fonts.css";
 import {FriendList} from "../components/Profile/Friends/FriendList";
-import {useMediaQuery, useTheme} from "@mui/material";
 
 
 export const Profile = () => {

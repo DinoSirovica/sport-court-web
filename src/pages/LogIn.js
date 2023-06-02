@@ -1,10 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import styles from "../css/Login.css"
-import {Link, Navigate, useLocation} from "react-router-dom";
-import { SHA512 } from 'crypto-js';
+import {Link, useLocation} from "react-router-dom";
 import axios from "axios";
 import {Footer} from "../components/Footer/Footer";
 import {hashPassword} from "../util/password";

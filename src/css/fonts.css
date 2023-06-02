@@ -3,16 +3,17 @@ h1 {
 }
 h2{
     font-size: 40px!important;
-    font-style: bold!important;
+    font-weight: bold!important;
 }
 
 h3{
     font-size: 28px!important;
-    font-style: bold!important;
+    font-weight: bold!important;
     margin-bottom: 40px!important;
 }
 h4{
     font-size: 16px!important;
+    font-weight: bold!important;
 }
 
 p {
@@ -28,4 +29,9 @@ ul li a {
     margin-top: 10em!important;
     margin-bottom: 9em!important;
     color: grey!important;
+}
+
+.disabled{
+    opacity: 0.5;
+    pointer-events: none;
 }

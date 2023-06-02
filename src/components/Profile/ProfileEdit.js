@@ -1,7 +1,7 @@
 import CardContent from "@mui/material/CardContent";
 import * as React from "react";
 import {TextField, ThemeProvider} from "@mui/material";
-import {forwardRef, useEffect, useImperativeHandle, useRef, useState} from "react";
+import {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import Button from "@mui/material/Button";
 import {Col, Row} from "react-bootstrap";
 import {AvatarImage} from "./AvatarImage";

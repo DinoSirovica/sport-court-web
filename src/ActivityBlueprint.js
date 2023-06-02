@@ -1,7 +1,6 @@
 import {Col, Container, Row} from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import {BsCalendarEvent, BsClock, BsFlag, BsPeople} from "react-icons/bs";
-import Button from "react-bootstrap/Button";
 import React from "react";
 
 export const ActivityBlueprint = ({item, index}) => {

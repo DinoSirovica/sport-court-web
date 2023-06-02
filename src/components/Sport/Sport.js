@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Sports.css"
+import "../../css/Sports.css"
 
 export const SportButton = ({image, altText, onClick}) => {
     return (

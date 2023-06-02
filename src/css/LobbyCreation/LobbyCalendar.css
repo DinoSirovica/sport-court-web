@@ -1,0 +1,70 @@
+.card {
+    margin-top: 10px;
+    margin-bottom: 2em;
+}
+
+.card-header {
+    padding: 10px 15px;
+}
+
+.card-body {
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th,
+td {
+    padding: 0;
+    color: white;
+}
+th {
+    text-align: center;
+    background-color: #124a49;
+    height: 45px;
+}
+td {
+    height: 85px;
+    background-color: #1A6A69;
+    border: 5px solid white;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+td:hover {
+    cursor: pointer;
+    background-color: #F4A259;
+    color: #262626;
+}
+.text-muted {
+    color: #6c757d;
+    background-color: white;
+}
+.not-clickable-date{
+    pointer-events: none;
+}
+
+span.text-position{
+    display: flex;
+    min-height: 100%;
+    align-items: end;
+    justify-content: end;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+.past-day{
+    background-color: rgba(18, 74, 73, 0.5);
+    border: 5px solid white;
+}
+.today {
+    background-image: linear-gradient(227deg, #F4A259 15%, transparent 15%);
+    background-color: #1A6A69;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.today:hover{
+    background-color: #F4A259;
+}
+
+

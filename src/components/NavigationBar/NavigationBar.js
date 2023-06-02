@@ -1,6 +1,6 @@
 import { Nav, Navbar, NavLink, Container, Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import "./Navigation.css"
+import "../../css/Navigation.css"
 import "../../css/fonts.css"
 import {isAuthenticated, logOut} from "../../util/auth";
 import { Menu, MenuItem} from "@mui/material";
@@ -8,7 +8,6 @@ import {useState} from "react";
 import {getUserProfile} from "../../util/apiRequestHelper";
 import {getImageFromBase64} from "../../util/helper";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
 
 
 export const NavigationBar = ({}) => {
@@ -26,9 +25,6 @@ export const NavigationBar = ({}) => {
     const handleClose = () => {
       setAnchorEl(null);
     };
-   const goToProfile = () => {
-     window.location.pathname = "/Profile";
-  };
 
    const getImage = async () => {
      if (isLogged) {
@@ -57,7 +53,6 @@ export const NavigationBar = ({}) => {
                <NavLink className="text1" eventKey="2" as={Link} to="/activities" isActive={() => location.pathname.includes("/activities")}>Aktivnosti</NavLink>
                <NavLink className="text1" eventKey="3" as={Link} to="/about-us" isActive={() => location.pathname.includes("/about-us")}>O nama</NavLink>
                <div>
-                 <IconButton></IconButton>
                  <Button
                      className={"profileButton"}
                      onClick={handleClick}
