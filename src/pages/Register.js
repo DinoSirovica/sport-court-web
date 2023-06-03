@@ -28,7 +28,6 @@ export function Register() {
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
-        console.log(form.checkValidity());
       if (form.checkValidity() === true) {
         event.stopPropagation();
       }
@@ -51,7 +50,6 @@ export function Register() {
                     }
                 })
                     .then(response => {
-                        console.log('Models created!');
                         window.location.href = "/login";
                     })
                     .catch(error => {

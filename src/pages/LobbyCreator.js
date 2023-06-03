@@ -1,20 +1,24 @@
+import { useState, useEffect, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import "../css/LobbyCreation/LobbyCreator.css";
-import "../css/fonts.css";
-import React from "react";
-import { useState } from "react";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import theme from "../util/colorPallet";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import LobbyCalendar from "../components/LobbyCalendar/LobbyCalendar";
-import { Footer } from "../components/Footer/Footer";
 import AddIcon from "@mui/icons-material/Add";
 import { TimePicker } from "../components/LobbyCalendar/TimePicker";
+import LobbyCalendar from "../components/LobbyCalendar/LobbyCalendar";
+import {createLobby, getSportCenters, getSports} from "../util/apiRequestHelper";
+import { Footer } from "../components/Footer/Footer";
+import { format } from "date-fns";
+import "../css/LobbyCreation/LobbyCreator.css";
+import "../css/fonts.css";
 
 export const LobbyCreator = () => {
     const location = useLocation();
+    const timePickerRef = useRef(null);
+    const calendarRef = useRef(null);
+
     const [sport, setSport] = useState("none");
     const [city, setCity] = useState("none");
     const [sportCenter, setSportCenter] = useState("none");
@@ -23,35 +27,131 @@ export const LobbyCreator = () => {
     const [date, setDate] = useState(null);
     const [endTime, setEndTime] = useState(null);
     const [startTime, setStartTime] = useState(null);
+    const [sports, setSports] = useState([]);
+    const [sportCenters, setSportCenters] = useState([]);
+    const [centersInCity, setCentersInCity] = useState([]);
+    const [address, setAddress] = useState(null);
+
+
+    useEffect(() => {
+        getSports().then((response) => {
+            setSports(response.data);
+        });
+    }, []);
+
+    useEffect(() => {
+        if (sport !== "none") {
+            getSportCenters(sport).then((response) => {
+                setSportCenters(response);
+            });
+        } else {
+            setSportCenters([]);
+        }
+    }, [sport]);
+
+    useEffect(() => {
+        if (city !== "none") {
+            setCentersInCity(sportCenters.filter((sportCenter) => sportCenter.zip_code == city));
+        } else {
+            setCentersInCity([]);
+        }
+    }, [city, sportCenters]);
+
+    const handleClearChecked = () => {
+        if (calendarRef.current) {
+            calendarRef.current.clearChecked();
+        }
+    };
 
     const handleCityChange = (event) => {
         setCity(event.target.value);
+        setSportCenter("none");
+        setHall("none")
+        setDate(null);
+        setStartTime(null);
+        setEndTime(null);
+        if (timePickerRef.current) {
+            timePickerRef.current.clearChecked();
+        }
     };
     const handleNameChange = (event) => {
         setLobbyName(event.target.value);
+        if (event.target.value.length === 0) {
+            setSport("none");
+            setSportCenter("none");
+            setHall("none")
+            setCity("none");
+            setDate(null);
+            setStartTime(null);
+            setEndTime(null);
+            handleClearChecked();
+            if (timePickerRef.current) {
+                timePickerRef.current.clearChecked();
+            }
+        }
     };
     const handleSportChange = (event) => {
         setSport(event.target.value);
+        setSportCenter("none");
+        setHall("none")
+        setCity("none");
+        setDate(null);
+        setStartTime(null);
+        setEndTime(null);
+        handleClearChecked();
+        if (timePickerRef.current) {
+            timePickerRef.current.clearChecked();
+        }
     };
     const handleSportCenterChange = (event) => {
         setSportCenter(event.target.value);
+        sportCenters.map((sportCenter) => {
+            if (sportCenter.id === event.target.value) {
+                setAddress(sportCenter.address);
+            }
+        });
+        setHall("none")
+        setDate(null);
+        handleClearChecked();
+        setStartTime(null);
+        setEndTime(null);
+        if (timePickerRef.current) {
+            timePickerRef.current.clearChecked();
+        }
     };
     const handleHallChange = (event) => {
         setHall(event.target.value);
+        setDate(null);
+        handleClearChecked();
+        setStartTime(null);
+        setEndTime(null);
+        if (timePickerRef.current) {
+            timePickerRef.current.clearChecked();
+        }
     };
     const handleDateChange = (date) => {
-        setDate(date);
+        setDate(format(date, "yyyy-MM-dd"));
+        setStartTime(null);
+        setEndTime(null);
+        if (timePickerRef.current) {
+            timePickerRef.current.clearChecked();
+        }
     };
-    const createLobby = () => {
-        console.log("Kreiraj lobby");
-        console.log("Naziv: " + lobbyName);
-        console.log("Sport: " + sport);
-        console.log("Grad: " + city);
-        console.log("Sport centar: " + sportCenter);
-        console.log("Dvorana: " + hall);
-        console.log("Datum:");
-        console.log(date);
-        console.log("Vrijeme: " + startTime + " - " + endTime);
+    const makeLobby = () => {
+        const lobby = {
+            name: lobbyName,
+            sport: sport,
+            address: address,
+            hall: hall,
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+            sportCenterId: sportCenter,
+            maxPlayers:  (sports.find((s) => s.id == sport)).maxPlayers,
+        };
+        createLobby(lobby).then((response) => {
+            window.location.href = "/activities";
+        });
     };
     const handleTimeChange = (times) => {
         times.sort();
@@ -60,10 +160,10 @@ export const LobbyCreator = () => {
         for (let i = 0; i < times.length; i++) {
             times.sort();
             if (value !== times[i]) {
-                console.log("Vrijednosti moraju biti povezane!");
+                // todo console.log("Vrijednosti moraju biti povezane!");
                 setEndTime(null);
             } else {
-                const lastTime = parseInt(times[times.length - 1]); // Convert the last time to a number
+                const lastTime = parseInt(times[times.length - 1]);
                 const endTime = lastTime + 1 + ":00:00";
                 setEndTime(endTime);
                 setStartTime(times[0] + ":00:00");
@@ -71,6 +171,19 @@ export const LobbyCreator = () => {
             value++;
         }
     };
+    function getListOfCities() {
+        const cities = [];
+        for (let i = 0; i < sportCenters.length; i++) {
+            const sportCenter = sportCenters[i];
+            if(cities.length=== 0){
+                 cities.push({zip_code: sportCenter.zip_code, city: sportCenter.city});
+            }
+            else if (!cities.some(e => e.zip_code === sportCenter.zip_code)) {
+                cities.push({zip_code: sportCenter.zip_code, city: sportCenter.city});
+            }
+        }
+        return cities;
+    }
 
     return (
         <>
@@ -105,7 +218,7 @@ export const LobbyCreator = () => {
                         <Row>
                             <div className={"mt-4"}>
                                 <h4>Kratke upute za kreiranje aktivnosti:</h4>
-                                <ol className="koraci-za-kreiranje list-unstyled">
+                                <ol className="lobby-creation-guide list-unstyled">
                                     <li>
                                         <span>1.</span> Napišiti naslov
                                     </li>
@@ -163,8 +276,11 @@ export const LobbyCreator = () => {
                                         <MenuItem value="none" disabled>
                                             <em>Sport</em>
                                         </MenuItem>
-                                        <MenuItem value={"Nogomet"}>Nogomet</MenuItem>
-                                        <MenuItem value={"Kosarka"}>Košarka</MenuItem>
+                                        {sports.map((sport) => (
+                                            <MenuItem key={sport.id} value={sport.id}>
+                                                {sport.name}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                             </Col>
@@ -196,9 +312,14 @@ export const LobbyCreator = () => {
                                         <MenuItem value="none" disabled>
                                             <em>Grad</em>
                                         </MenuItem>
-                                        <MenuItem value={"Zagreb"}>Zagreb</MenuItem>
-                                        <MenuItem value={"Split"}>Split</MenuItem>
-                                        <MenuItem value={"Osjek"}>Osjek</MenuItem>
+                                        {sport !== "none" && (
+                                            getListOfCities().map((sportCenter) => (
+                                                <MenuItem key={sportCenter.zip_code} value={sportCenter.zip_code}>
+                                                    {sportCenter.city}
+                                                </MenuItem>
+                                            ))
+                                        )}
+
                                     </Select>
                                 </FormControl>
                             </Col>
@@ -230,12 +351,14 @@ export const LobbyCreator = () => {
                                         <MenuItem value="none" disabled>
                                             <em>Centar</em>
                                         </MenuItem>
-                                        <MenuItem value={"Concordia"}>
-                                            Sportski cenar Concordia
-                                        </MenuItem>
-                                        <MenuItem value={"Univers"}>
-                                            Sportski cenar Univers
-                                        </MenuItem>
+                                        {city !== "none" && (
+                                            centersInCity.map((sportCenter) => (
+                                                <MenuItem key={sportCenter.id} value={sportCenter.id}>
+                                                    {sportCenter.sportCenterName}
+                                                </MenuItem>
+                                            ))
+                                        )}
+
                                     </Select>
                                 </FormControl>
                             </Col>
@@ -267,8 +390,13 @@ export const LobbyCreator = () => {
                                         <MenuItem value="none" disabled>
                                             <em>Dvorane</em>
                                         </MenuItem>
-                                        <MenuItem value={"Velika"}>Velika dvorana</MenuItem>
-                                        <MenuItem value={"Mala"}>Mala dvorana</MenuItem>
+                                        {sportCenter !== "none" && (
+                                            sportCenters.find((sc) => sc.id == sportCenter).halls.map((hall) => (
+                                                <MenuItem key={hall} value={hall}>
+                                                    {hall}
+                                                </MenuItem>
+                                            ))
+                                        )}
                                     </Select>
                                 </FormControl>
                             </Col>
@@ -278,6 +406,7 @@ export const LobbyCreator = () => {
                                 <LobbyCalendar
                                     disabled={hall === "" || hall === "none"}
                                     dateChange={handleDateChange}
+                                    ref={calendarRef}
                                 />
                             </Col>
                         </Row>
@@ -302,7 +431,7 @@ export const LobbyCreator = () => {
                                     },
                                 }}
                                 onClick={() => {
-                                    createLobby();
+                                    makeLobby();
                                 }}
                             >
                                 Kreiraj aktivnost
@@ -312,6 +441,10 @@ export const LobbyCreator = () => {
                             <TimePicker
                                 disabled={date === null}
                                 timeChange={handleTimeChange}
+                                centerId={sportCenter}
+                                hall={hall}
+                                date={date}
+                                ref={timePickerRef}
                             />
                         </Row>
                     </Col>

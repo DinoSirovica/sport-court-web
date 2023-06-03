@@ -17,7 +17,7 @@ export default User;
 
 
 export class Lobby{
-    constructor(id,name,sportId,location,maxPlayers,currentPlayers,playerIds,date, startTime, endTime){
+    constructor(id,name,sportId,location,maxPlayers,currentPlayers,playerIds,date, startTime, endTime, hall,centerId){
         this.id=id;
         this.name=name;
         this.sportId=sportId;
@@ -28,6 +28,30 @@ export class Lobby{
         this.date=date;
         this.startTime=startTime;
         this.endTime=endTime;
+        this.hall=hall;
+        this.centerId=centerId;
+    }
+}
+
+export class SportCenterDTO{
+    constructor(id,sportCenterName,oib,sports,userId,city,address,zip_code,halls){
+        this.id=id;
+        this.sportCenterName=sportCenterName;
+        this.oib=oib;
+        this.sports=sports;
+        this.userId=userId;
+        this.city=city;
+        this.address=address;
+        this.zip_code=zip_code;
+        this.halls=halls;
+    }
+}
+
+export class Sport{
+    constructor(id,name,maxPlayers){
+        this.id=id;
+        this.name=name;
+        this.maxPlayers=maxPlayers;
     }
 }
 

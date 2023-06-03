@@ -28,7 +28,6 @@ export const LogIn = () => {
                     }
                 })
                     .then(response => {
-                        console.log('Log in succesful!');
                         localStorage.setItem('token', response.data.token);
                         localStorage.setItem('username', response.data.username);
                         localStorage.setItem('role', response.data.role);

@@ -1,11 +1,11 @@
 
-.koraci-za-kreiranje {
+.lobby-creation-guide {
     list-style-type: none;
     counter-reset: list-counter;
     padding-left: 0;
 }
 
-.koraci-za-kreiranje li {
+.lobby-creation-guide li {
     position: relative;
     padding-left: 3em;
     min-height: 3em;
@@ -13,12 +13,12 @@
     align-items: center;
 }
 
-.koraci-za-kreiranje li span {
+.lobby-creation-guide li span {
     position: absolute;
     top: 10%;
     left: 0;
     padding: 0.4em 0.6em;
-    background-color: #ff8800;
+    background-color: #F4A259;
     color: #262626;
     display: flex;
     justify-content: center;
@@ -35,5 +35,11 @@
     margin-bottom: 20px;
     outline: none;
     font-size: 25px;
+}
+
+.reserved{
+    background-color: #791919!important;
+    pointer-events: none;
+    opacity:  1;
 }
 

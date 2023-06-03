@@ -67,4 +67,9 @@ span.text-position{
     background-color: #F4A259;
 }
 
+.chosenDate{
+    background-color: #104241 !important;
+    pointer-events: none;
+}
+
 
