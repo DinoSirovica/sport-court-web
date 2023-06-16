@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -19,16 +19,16 @@ import User from "../Models/Models";
 import {useMediaQuery, useTheme} from "@mui/material";
 
 export const ProfileDetailExpend = styled((props) => {
-    const { expand, ...other } = props;
+    const {expand, ...other} = props;
     return <IconButton {...other} />;
-})(({ theme, expand }) => ({
+})(({theme, expand}) => ({
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
         duration: theme.transitions.duration.shortest,
     }),
 }));
 
-export default function ProfileDetailCard({ user, userUpdate }: { user: User }) {
+export default function ProfileDetailCard({user, userUpdate}: { user: User }) {
     const [expanded, setExpanded] = useState(false);
     const [editButton, setEditButton] = useState("Uredi");
     const [newUser, setNewUser] = useState(null);
@@ -37,11 +37,10 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
     const editRef = useRef(null);
 
-    // Method to call the childMethod
     const getEditValues = () => {
         if (editRef.current) {
             const temp = editRef.current.getValues();
-            const user = new User(temp.id,temp.username,temp.firstname,temp.lastname,temp.phoneNumber,temp.email,temp.password,temp.role,temp.imageData)
+            const user = new User(temp.id, temp.username, temp.firstname, temp.lastname, temp.phoneNumber, temp.email, temp.password, temp.role, temp.imageData)
             setNewUser(user);
             setIsChanged(editRef.current.getChange());
         }
@@ -65,7 +64,7 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
 
     return (
         <Card
-            className={"profile-card-body"}
+            className="profile-card-body"
             sx={{
                 maxWidth: 326,
                 flexDirection: isMobile ? "column" : "row",
@@ -95,7 +94,7 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
                 aria-label="recipe"
             ></Avatar>
             <CardContent
-                className={"pt-0"}
+                className="pt-0"
                 sx={{
                     position: "relative",
                     top: "-30px",
@@ -123,15 +122,15 @@ export default function ProfileDetailCard({ user, userUpdate }: { user: User }) 
                     aria-label="show more"
                 >
                     <Button disableRipple sx={{
-                        width:"100%",
+                        width: "100%",
                     }
-                    } className={"button-profile m-0"} variant="contained">
+                    } className="button-profile m-0" variant="contained">
                         {editButton}
                     </Button>
                 </ProfileDetailExpend>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <ProfileEdit user={user} ref={editRef} />
+                <ProfileEdit user={user} ref={editRef}/>
             </Collapse>
         </Card>
     );

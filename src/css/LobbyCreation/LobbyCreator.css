@@ -26,7 +26,7 @@
     border-radius: 5px;
 }
 
-.input-naziv{
+.input-naziv {
     width: 100%;
     height: 50px;
     border: none;
@@ -37,9 +37,9 @@
     font-size: 25px;
 }
 
-.reserved{
-    background-color: #791919!important;
+.reserved {
+    background-color: #791919 !important;
     pointer-events: none;
-    opacity:  1;
+    opacity: 1;
 }
 

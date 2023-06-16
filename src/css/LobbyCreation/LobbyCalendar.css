@@ -21,11 +21,13 @@ td {
     padding: 0;
     color: white;
 }
+
 th {
     text-align: center;
     background-color: #124a49;
     height: 45px;
 }
+
 td {
     height: 85px;
     background-color: #1A6A69;
@@ -38,15 +40,17 @@ td:hover {
     background-color: #F4A259;
     color: #262626;
 }
+
 .text-muted {
     color: #6c757d;
     background-color: white;
 }
-.not-clickable-date{
+
+.not-clickable-date {
     pointer-events: none;
 }
 
-span.text-position{
+span.text-position {
     display: flex;
     min-height: 100%;
     align-items: end;
@@ -54,20 +58,23 @@ span.text-position{
     padding-bottom: 5px;
     padding-right: 5px;
 }
-.past-day{
+
+.past-day {
     background-color: rgba(18, 74, 73, 0.5);
     border: 5px solid white;
 }
+
 .today {
     background-image: linear-gradient(227deg, #F4A259 15%, transparent 15%);
     background-color: #1A6A69;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
-.today:hover{
+
+.today:hover {
     background-color: #F4A259;
 }
 
-.chosenDate{
+.chosenDate {
     background-color: #104241 !important;
     pointer-events: none;
 }

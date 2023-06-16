@@ -1,16 +1,16 @@
-import { useState, useEffect, useRef } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import {useState, useEffect, useRef} from "react";
+import {Col, Container, Row} from "react-bootstrap";
+import {Link, useLocation} from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import theme from "../util/colorPallet";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { TimePicker } from "../components/LobbyCalendar/TimePicker";
+import {TimePicker} from "../components/LobbyCalendar/TimePicker";
 import LobbyCalendar from "../components/LobbyCalendar/LobbyCalendar";
 import {createLobby, getSportCenters, getSports} from "../util/apiRequestHelper";
-import { Footer } from "../components/Footer/Footer";
-import { format } from "date-fns";
+import {Footer} from "../components/Footer/Footer";
+import {format} from "date-fns";
 import "../css/LobbyCreation/LobbyCreator.css";
 import "../css/fonts.css";
 
@@ -147,7 +147,7 @@ export const LobbyCreator = () => {
             startTime: startTime,
             endTime: endTime,
             sportCenterId: sportCenter,
-            maxPlayers:  (sports.find((s) => s.id == sport)).maxPlayers,
+            maxPlayers: (sports.find((s) => s.id == sport)).maxPlayers,
         };
         createLobby(lobby).then((response) => {
             window.location.href = "/activities";
@@ -160,7 +160,6 @@ export const LobbyCreator = () => {
         for (let i = 0; i < times.length; i++) {
             times.sort();
             if (value !== times[i]) {
-                // todo console.log("Vrijednosti moraju biti povezane!");
                 setEndTime(null);
             } else {
                 const lastTime = parseInt(times[times.length - 1]);
@@ -171,14 +170,14 @@ export const LobbyCreator = () => {
             value++;
         }
     };
+
     function getListOfCities() {
         const cities = [];
         for (let i = 0; i < sportCenters.length; i++) {
             const sportCenter = sportCenters[i];
-            if(cities.length=== 0){
-                 cities.push({zip_code: sportCenter.zip_code, city: sportCenter.city});
-            }
-            else if (!cities.some(e => e.zip_code === sportCenter.zip_code)) {
+            if (cities.length === 0) {
+                cities.push({zip_code: sportCenter.zip_code, city: sportCenter.city});
+            } else if (!cities.some(e => e.zip_code === sportCenter.zip_code)) {
                 cities.push({zip_code: sportCenter.zip_code, city: sportCenter.city});
             }
         }
@@ -187,12 +186,12 @@ export const LobbyCreator = () => {
 
     return (
         <>
-            <Container style={{ minWidth: "90%" }}>
-                <Row className={"mt-5 mx-5 g-5"}>
-                    <Col xs={12} md={3} className={"m-0"}>
+            <Container style={{minWidth: "90%"}}>
+                <Row className="mt-5 mx-5 g-5">
+                    <Col xs={12} md={3} className="m-0">
                         <Row>
                             <Button
-                                startIcon={<ArrowBackIcon />}
+                                startIcon={<ArrowBackIcon/>}
                                 className="p-3"
                                 sx={{
                                     bgcolor: theme.palette.primary.main,
@@ -216,7 +215,7 @@ export const LobbyCreator = () => {
                             </Button>
                         </Row>
                         <Row>
-                            <div className={"mt-4"}>
+                            <div className="mt-4">
                                 <h4>Kratke upute za kreiranje aktivnosti:</h4>
                                 <ol className="lobby-creation-guide list-unstyled">
                                     <li>
@@ -238,10 +237,10 @@ export const LobbyCreator = () => {
                             </div>
                         </Row>
                     </Col>
-                    <Col xs={12} md={6} className={"my-0"}>
+                    <Col xs={12} md={6} className="my-0">
                         <input
-                            className={"input-naziv"}
-                            type={"text"}
+                            className="input-naziv"
+                            type="text"
                             onChange={handleNameChange}
                             placeholder="Naziv"
                         />
@@ -267,9 +266,9 @@ export const LobbyCreator = () => {
                                         }}
                                     ></InputLabel>
                                     <Select
-                                        sx={{ color: "#fff", borderRadius: "15px" }}
+                                        sx={{color: "#fff", borderRadius: "15px"}}
                                         id="sportLabel"
-                                        label={"Sport"}
+                                        label="Sport"
                                         value={sport}
                                         onChange={handleSportChange}
                                     >
@@ -300,12 +299,12 @@ export const LobbyCreator = () => {
                                 >
                                     <InputLabel
                                         id="cityLabel"
-                                        sx={{ color: "#fff" }}
+                                        sx={{color: "#fff"}}
                                     ></InputLabel>
                                     <Select
-                                        sx={{ color: "#fff", borderRadius: "15px" }}
+                                        sx={{color: "#fff", borderRadius: "15px"}}
                                         id="cityLabel"
-                                        label={"Grad"}
+                                        label="Grad"
                                         value={city}
                                         onChange={handleCityChange}
                                     >
@@ -339,12 +338,12 @@ export const LobbyCreator = () => {
                                 >
                                     <InputLabel
                                         id="centarLabel"
-                                        sx={{ color: "#fff" }}
+                                        sx={{color: "#fff"}}
                                     ></InputLabel>
                                     <Select
-                                        sx={{ color: "#fff", borderRadius: "15px" }}
+                                        sx={{color: "#fff", borderRadius: "15px"}}
                                         id="centarLabel"
-                                        label={"Centar"}
+                                        label="Centar"
                                         value={sportCenter}
                                         onChange={handleSportCenterChange}
                                     >
@@ -378,12 +377,12 @@ export const LobbyCreator = () => {
                                 >
                                     <InputLabel
                                         id="hallLabel"
-                                        sx={{ color: "#fff" }}
+                                        sx={{color: "#fff"}}
                                     ></InputLabel>
                                     <Select
-                                        sx={{ color: "#fff", borderRadius: "15px" }}
+                                        sx={{color: "#fff", borderRadius: "15px"}}
                                         id="hallLabel"
-                                        label={"Dvorane"}
+                                        label="Dvorane"
                                         value={hall}
                                         onChange={handleHallChange}
                                     >
@@ -411,10 +410,10 @@ export const LobbyCreator = () => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={12} md={3} className={"mt-0"}>
+                    <Col xs={12} md={3} className="mt-0">
                         <Row>
                             <Button
-                                endIcon={<AddIcon />}
+                                endIcon={<AddIcon/>}
                                 className={`${
                                     endTime === null ? "disabled" : ""
                                 } p-3 w-100`}
@@ -450,7 +449,7 @@ export const LobbyCreator = () => {
                     </Col>
                 </Row>
             </Container>
-            <Footer />
+            <Footer/>
         </>
     );
 };

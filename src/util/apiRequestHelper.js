@@ -8,14 +8,14 @@ export async function getUserProfile() {
     return response.data;
 }
 
-export async function getLobbiesForUser(id){
-    const response = await axios.get(API_URL + '/lobby/user/'+ id)
+export async function getLobbiesForUser(id) {
+    const response = await axios.get(API_URL + '/lobby/user/' + id)
     return response.data;
 }
 
-export async function updateUser(user){
+export async function updateUser(user) {
     const url = API_URL + '/user/update/' + user.username;
-     const userJson = {
+    const userJson = {
         "id": user.id,
         "username": user.username,
         "firstname": user.firstname,
@@ -28,18 +28,16 @@ export async function updateUser(user){
         "friendIds": user.friendIds,
     }
 
-    const response = await axios.put(url, userJson)
-        .catch(error => {
-            console.error(error);
-        });
+    const response = await axios.put(url, userJson);
     return response.data;
 }
 
-export async function getSports(){
+export async function getSports() {
     const response = await axios.get(API_URL + '/sport/all');
     return response;
 }
-export async function getSportById(id){
+
+export async function getSportById(id) {
     const response = await axios.get(API_URL + '/sport/' + id);
     return response.data;
 }
@@ -64,21 +62,18 @@ export async function getSportCenters(sportId) {
     return sportCenters;
 }
 
-export async function createLobby(data){
+export async function createLobby(data) {
     const url = API_URL + '/lobby/save';
     const userId = (await getUserProfile()).id
 
-    const lobby = new Lobby(1,data.name,data.sport,data.address, data.maxPlayers, 1, userId,data.date,
+    const lobby = new Lobby(1, data.name, data.sport, data.address, data.maxPlayers, 1, userId, data.date,
         data.startTime, data.endTime, data.hall, data.sportCenterId);
 
-    const response = await axios.post(url, lobby)
-        .catch(error => {
-            console.error(error);
-        });
+    const response = await axios.post(url, lobby);
     return response.data;
 }
 
-export async function getLobbiesByCenterId(id, hall,date){
+export async function getLobbiesByCenterId(id, hall, date) {
     const response = await axios.get(API_URL + '/lobby/center/' + id + '/' + hall + '/' + date);
     return response;
 }

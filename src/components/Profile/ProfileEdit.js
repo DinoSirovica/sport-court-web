@@ -9,7 +9,7 @@ import "../../css/fonts.css";
 import theme from "../../util/colorPallet";
 
 
-export const ProfileEdit = forwardRef (({user},ref) => {
+export const ProfileEdit = forwardRef(({user}, ref) => {
     const [image, setImage] = React.useState(user.imageData);
     const [firstname, setFirstname] = React.useState(user.firstname);
     const [lastname, setLastname] = React.useState(user.lastname);
@@ -20,23 +20,23 @@ export const ProfileEdit = forwardRef (({user},ref) => {
     const childRef = useRef(null);
 
     const getValues = () => {
-        if(image !== user.imageData){
+        if (image !== user.imageData) {
             user.imageData = image;
             setIsChanged(true);
         }
-        if(firstname !== user.firstname){
+        if (firstname !== user.firstname) {
             user.firstname = firstname;
             setIsChanged(true);
         }
-        if(lastname !== user.lastname){
+        if (lastname !== user.lastname) {
             user.lastname = lastname;
             setIsChanged(true);
         }
-        if(email !== user.email){
+        if (email !== user.email) {
             user.email = email;
             setIsChanged(true);
         }
-        if(phone !== user.phoneNumber){
+        if (phone !== user.phoneNumber) {
             user.phoneNumber = phone;
             setIsChanged(true);
         }
@@ -46,26 +46,12 @@ export const ProfileEdit = forwardRef (({user},ref) => {
         return isChanged;
     };
 
-    // Assign the childMethod to the ref
     useImperativeHandle(ref, () => ({
         getValues, getChange
     }));
 
     const handleImageChange = (value) => {
         setImage(value);
-    };
-    const handleFirstnameChange = (event) => {
-        setFirstname(event.target.value);
-
-    };
-    const handleLastnameChange = (event) => {
-        setLastname(event.target.value);
-    };
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-    const handlePhoneChange = (event) => {
-        setPhone(event.target.value);
     };
 
     return (
@@ -75,32 +61,32 @@ export const ProfileEdit = forwardRef (({user},ref) => {
                     <Row>
                         <Col key={1} className='mx-0 text-center'>
                             <AvatarImage image={image} imageChange={handleImageChange}/>
-                            <TextField fullWidth focused color={"secondary"} className={" mb-2"} id="outlined-basic"
-                                       label="Ime" variant="outlined" value={firstname} onChange={handleFirstnameChange}
+                            <TextField fullWidth focused color="secondary" className=" mb-2" id="outlined-basic"
+                                       label="Ime" variant="outlined" value={firstname} onChange={e=>setFirstname(e.target.value)}
                                        InputProps={{
                                            style: {color: '#fff'},
                                        }}/>
-                            <TextField fullWidth focused color={"secondary"} className={" mb-2"} id="outlined-basic"
+                            <TextField fullWidth focused color="secondary" className=" mb-2" id="outlined-basic"
                                        label="Prezime" variant="outlined" value={lastname}
-                                       onChange={handleLastnameChange}
+                                       onChange={e=>setLastname(e.target.value)}
                                        InputProps={{
                                            style: {color: '#fff'},
                                        }}/>
-                            <TextField fullWidth focused color={"secondary"} className={" mb-2"} id="outlined-basic"
-                                       label="Email" variant="outlined" value={email} onChange={handleEmailChange}
+                            <TextField fullWidth focused color="secondary" className=" mb-2" id="outlined-basic"
+                                       label="Email" variant="outlined" value={email} onChange={e=>setEmail(e.target.value)}
                                        InputProps={{
                                            style: {color: '#fff'},
                                        }}/>
-                            <TextField fullWidth focused color={"secondary"} className={"mb-2"} id="outlined-basic"
+                            <TextField fullWidth focused color="secondary" className="mb-2" id="outlined-basic"
                                        label="Broji telefona" variant="outlined" value={phone}
-                                       onChange={handlePhoneChange}
+                                       onChange={e=>setPhone(e.target.value)}
                                        InputProps={{
                                            style: {color: '#fff',},
                                        }}/>
-                            <Button className={"mb-2"} fullWidth color={"secondary"} disableRipple variant="contained" onClick={() => console.log(firstname)}>
-                               Promijeni lozinku
+                            <Button className="mb-2" fullWidth color="secondary" disableRipple variant="contained">
+                                Promijeni lozinku
                             </Button>
-                            <Button className={"mb-2"} fullWidth color={"secondary"} disableRipple variant="contained" onClick={() => console.log(lastname)}>
+                            <Button className="mb-2" fullWidth color="secondary" disableRipple variant="contained">
                                 Deaktiviraj račun
                             </Button>
                         </Col>

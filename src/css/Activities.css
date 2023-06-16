@@ -3,7 +3,7 @@
     border: none;
     z-index: 1000;
     position: relative;
-    color:white;
+    color: white;
     text-decoration: none;
 }
 
@@ -31,16 +31,16 @@
 }
 
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
     background-color: white;
     color: black;
 }
 
-.accordion-button:not(.collapsed)::after{
+.accordion-button:not(.collapsed)::after {
     background-image: var(--bs-accordion-btn-icon);
 }
 
-.dropdown{
+.dropdown {
     margin: 10px;
 }
 
@@ -58,11 +58,12 @@
     text-decoration: none;
 }
 
-.col{
+.col {
 
     text-align: center;
 }
-.showMorePosition{
+
+.showMorePosition {
     margin-bottom: 20px;
     width: 200px;
     position: relative;

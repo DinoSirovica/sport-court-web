@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import {Col, Row} from "react-bootstrap";
 import {BsCalendar, BsClock, BsFlag, BsPeople} from "react-icons/bs";
 
-export function AllLobbyCards({ lobbies }) {
+export function AllLobbyCards({lobbies}) {
     const [hoveredIndex, setHoverIndex] = useState(-1);
     const handleMouseEnter = (index) => {
         setHoverIndex(index);
@@ -19,9 +19,6 @@ export function AllLobbyCards({ lobbies }) {
         <>
             {lobbies.map((lobby, index) => (
                 <Card
-                    onClick={() => {
-                        console.log("clicked");
-                    }}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                     key={index}
@@ -39,11 +36,11 @@ export function AllLobbyCards({ lobbies }) {
                         borderTop: "4px solid" + theme.palette.primary.main,
                     }}
                 >
-                    <CardContent className={"pt-0"}>
-                        <Row xs={2} className={"p-0"} >
-                            <Col md={4} sm={11} xs={11} className={"p-0 m-4"}>
+                    <CardContent className="pt-0">
+                        <Row xs={2} className="p-0">
+                            <Col md={4} sm={11} xs={11} className="p-0 m-4">
                                 <div
-                                    className={"profileLobbyNameDiv"}
+                                    className="profileLobbyNameDiv"
                                     style={{
                                         backgroundColor:
                                             hoveredIndex === index
@@ -55,14 +52,15 @@ export function AllLobbyCards({ lobbies }) {
                                                 : theme.palette.primary.contrastText,
                                     }}
                                 >
-                                    <span style={{ fontWeight: "bold" }}>{lobby.name}</span>
-                                    <br />
-                                    <span style={{ fontStyle: "italic" }}>{lobby.sport.name}</span>
+                                    <span style={{fontWeight: "bold"}}>{lobby.name}</span>
+                                    <br/>
+                                    <span style={{fontStyle: "italic"}}>{lobby.sport.name}</span>
                                 </div>
                             </Col>
                             <Col style={{
-                                color: hoveredIndex === index ? theme.palette.primary.contrastText : theme.palette.primary.darker}}>
-                                <Row xs={2} style={{whiteSpace:"nowrap"}}>
+                                color: hoveredIndex === index ? theme.palette.primary.contrastText : theme.palette.primary.darker
+                            }}>
+                                <Row xs={2} style={{whiteSpace: "nowrap"}}>
                                     <Col xs={1}>
                                         <BsFlag/>
                                     </Col>
@@ -70,7 +68,7 @@ export function AllLobbyCards({ lobbies }) {
                                         {lobby.location}
                                     </Col>
                                 </Row>
-                                <Row xs={2} style={{whiteSpace:"nowrap"}}>
+                                <Row xs={2} style={{whiteSpace: "nowrap"}}>
                                     <Col xs={1}>
                                         <BsPeople/>
                                     </Col>
@@ -78,7 +76,7 @@ export function AllLobbyCards({ lobbies }) {
                                         {lobby.currentPlayers}/{lobby.maxPlayers} mjesta popunjeno
                                     </Col>
                                 </Row>
-                                <Row xs={2} style={{whiteSpace:"nowrap"}}>
+                                <Row xs={2} style={{whiteSpace: "nowrap"}}>
                                     <Col xs={1}>
                                         <BsCalendar/>
                                     </Col>
@@ -90,7 +88,7 @@ export function AllLobbyCards({ lobbies }) {
                                     <Col xs={1}>
                                         <BsClock/>
                                     </Col>
-                                    <Col style={{whiteSpace:"nowrap"}}>
+                                    <Col style={{whiteSpace: "nowrap"}}>
                                         {lobby.startTime} - {lobby.endTime}
                                     </Col>
                                 </Row>

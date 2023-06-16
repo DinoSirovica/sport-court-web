@@ -68,14 +68,16 @@ button {
     background-color: transparent;
 }
 
-.profileButton{
-    background-color: transparent!important;
-    border: none!important;
-    margin-left: 15px!important;
+.profileButton {
+    background-color: transparent !important;
+    border: none !important;
+    margin-left: 15px !important;
 }
-.dropdownMenu{
+
+.dropdownMenu {
     color: black;
 }
-.dropdownMenu:hover{
+
+.dropdownMenu:hover {
     color: #0F403F;
 }

@@ -4,20 +4,20 @@ import {encodeImageToBase64, getImageFromBase64} from "../../util/helper";
 import "../../css/Profile/Profile.css"
 import UploadIcon from '@mui/icons-material/Upload';
 
-export function AvatarImage({ image , imageChange }) {
+export function AvatarImage({image, imageChange}) {
     const [imgfile, uploading] = useState(null);
     const [isHovered, setIsHovered] = useState(false);
     const fileInputRef = useRef(null);
 
     useState(() => {
-        uploading( getImageFromBase64(image));
+        uploading(getImageFromBase64(image));
     }, []);
 
     const handleImageUpload = (e) => {
         if (e.target.files.length !== 0) {
             const newImage = URL.createObjectURL(e.target.files[0]);
             uploading(newImage);
-            encodeImageToBase64(e.target.files[0], function (encodedImage){
+            encodeImageToBase64(e.target.files[0], function (encodedImage) {
                 imageChange(encodedImage);
             })
         }
@@ -31,22 +31,22 @@ export function AvatarImage({ image , imageChange }) {
             <div>
                 <center>
                     {imgfile && (
-                        <span onClick={handlePreviewClick} >
+                        <span onClick={handlePreviewClick}>
                              <input
                                  type="file"
                                  accept="image/*"
                                  onChange={handleImageUpload}
                                  ref={fileInputRef}
-                                 style={{ display: 'none' }}
+                                 style={{display: 'none'}}
                              />
-                            <div className={"mb-3"}
+                            <div className="mb-3"
                                  onMouseEnter={() => setIsHovered(true)}
                                  onMouseLeave={() => setIsHovered(false)}
                                  style={{
                                      width: '100px',
                                      height: '100px',
                                  }}>
-                               <Avatar src={imgfile} sx={"width:100px; height:100px"} className={"mb-3"}></Avatar>
+                               <Avatar src={imgfile} sx="width:100px; height:100px" className="mb-3"></Avatar>
                                 {isHovered && (
                                     <div
                                         className="overlay"
@@ -60,8 +60,8 @@ export function AvatarImage({ image , imageChange }) {
                                             background: 'rgba(0, 0, 0, 0.5)',
                                             cursor: 'pointer',
                                         }}>
-                                    <UploadIcon
-                                        sx={{color:"white", fontSize:"40px",position: 'relative', top: '25%'}}/>
+                                        <UploadIcon
+                                            sx={{color: "white", fontSize: "40px", position: 'relative', top: '25%'}}/>
                                     </div>
                                 )}
                             </div>

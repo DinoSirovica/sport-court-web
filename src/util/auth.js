@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+
 export const isAuthenticated = () => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -11,7 +12,7 @@ export const isAuthenticated = () => {
     }
 }
 
-export function logOut(){
+export function logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('username');

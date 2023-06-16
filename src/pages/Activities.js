@@ -4,20 +4,19 @@ import '../css/Activities.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {isAuthenticated} from '../util/auth';
 import {Footer} from '../components/Footer/Footer';
-import {ActivityBlueprint} from '../ActivityBlueprint';
+import {ActivityBlueprint} from '../components/Activities/ActivityBlueprint';
 import {bookingData} from '../mockData/bookings.js';
 import {Link, useLocation} from "react-router-dom";
 
 
 export const Activities = () => {
     const isLoggedin = isAuthenticated();
-    const [visibleCount, setVisibleCount] = useState(3); // Number of initially visible ActivityBlueprints
+    const [numOfVisibleActivityBlueprints, setNumOfVisibleActivityBlueprints] = useState(3); 
 
     const location = useLocation();
     const handleToggleVisibility = () => {
-        setVisibleCount((prevVisibleCount) => (prevVisibleCount === 3 ? bookingData.bookings.length : 3));
+        setNumOfVisibleActivityBlueprints((prevVisibleCount) => (prevVisibleCount === 3 ? bookingData.bookings.length : 3));
     };
-
     if (isLoggedin) {
         return (
             <>
@@ -68,7 +67,8 @@ export const Activities = () => {
 
                                     </Col>
                                     <Col>
-                                        <Button className="btn-primary dropdown" variant="link" as={Link} to="/lobbyCreator"
+                                        <Button className="btn-primary dropdown" variant="link" as={Link}
+                                                to="/lobbyCreator"
                                                 onClick={() => location.pathname.includes("/LobbyCreator")}>
                                             Nova aktivnost
                                         </Button>
@@ -79,14 +79,14 @@ export const Activities = () => {
                         </Col>
                     </Row>
                     <Row xs={1} md={3} className="align-items-center mx-3 px-1 py-5 g-3">
-                        {bookingData.bookings.slice(0, visibleCount).map((item, index) => (
+                        {bookingData.bookings.slice(0, numOfVisibleActivityBlueprints).map((item, index) => (
                             <ActivityBlueprint item={item} index={index}/>
                         ))}
                     </Row>
                     {bookingData.bookings.length > 3 && (
                         <Row className="text-center">
                             <Button className="showMorePosition" variant="primary" onClick={handleToggleVisibility}>
-                                {visibleCount === 3 ? 'Show More' : 'Show Less'}
+                                {numOfVisibleActivityBlueprints === 3 ? 'Show More' : 'Show Less'}
                             </Button>
                         </Row>
                     )}

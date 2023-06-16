@@ -1,14 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/LobbyCreation/LobbyCalendar.css';
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import React, {forwardRef, useImperativeHandle, useState} from 'react';
+import {Col, Row} from 'react-bootstrap';
 import IconButton from '@mui/material/IconButton';
-import { ArrowBack, ArrowForward } from '@mui/icons-material';
+import {ArrowBack, ArrowForward} from '@mui/icons-material';
 import theme from '../../util/colorPallet';
 import '../../css/fonts.css';
-import { format } from 'date-fns';
+import {format} from 'date-fns';
 
-export const LobbyCalendar = forwardRef(({ disabled, dateChange }, ref) => {
+export const LobbyCalendar = forwardRef(({disabled, dateChange}, ref) => {
     const [date, setDate] = useState(new Date());
     const [chosenDate, setChosenDate] = useState(null);
 
@@ -119,12 +119,12 @@ export const LobbyCalendar = forwardRef(({ disabled, dateChange }, ref) => {
                                         className={'p-1'}
                                         onClick={prevMonth}
                                     >
-                                        <ArrowBack />
+                                        <ArrowBack/>
                                     </IconButton>
                                 </Col>
                                 <Col xs={10} className="text-left">
                                     <h5 className="text-center">
-                                        {date.toLocaleDateString('hr-RH', { month: 'long', year: 'numeric' })}
+                                        {date.toLocaleDateString('hr-RH', {month: 'long', year: 'numeric'})}
                                     </h5>
                                 </Col>
                                 <Col xs={1} className="text-right">
@@ -140,7 +140,7 @@ export const LobbyCalendar = forwardRef(({ disabled, dateChange }, ref) => {
                                         className={'p-1'}
                                         onClick={nextMonth}
                                     >
-                                        <ArrowForward />
+                                        <ArrowForward/>
                                     </IconButton>
                                 </Col>
                             </Row>
@@ -160,7 +160,7 @@ export const LobbyCalendar = forwardRef(({ disabled, dateChange }, ref) => {
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td colSpan="7" style={{ height: '20px', backgroundColor: 'white' }}></td>
+                                    <td colSpan="7" style={{height: '20px', backgroundColor: 'white'}}></td>
                                 </tr>
                                 {getCalendarRows()}
                                 </tbody>
@@ -172,4 +172,4 @@ export const LobbyCalendar = forwardRef(({ disabled, dateChange }, ref) => {
         </div>
     );
 });
-export { LobbyCalendar as default };
+export {LobbyCalendar as default};
