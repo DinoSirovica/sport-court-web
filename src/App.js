@@ -15,13 +15,11 @@ import {Profile} from "./pages/Profile";
 
 function App() {
 
-    const [currentRoute, setCurrentRoute] = useState('');
-
     return (
 
         <div className="App">
             <Router>
-                <NavigationBar currentRoute={currentRoute}/>
+                <NavigationBar/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
                     <Route path='/activities' element={<Activities/>}/>

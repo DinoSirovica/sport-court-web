@@ -6,7 +6,7 @@ import React from "react";
 export const ActivityBlueprint = ({item, index}) => {
     return (
         <Col key={index} className='mx-0'>
-            <Accordion defaultActiveKey="0">
+            <Accordion >
                 <Accordion.Item eventKey={(index - 1).toString()} className='px-0 mx-auto my-3'>
                     <Accordion.Header>
                         <Container className="cards">

@@ -11,11 +11,11 @@ import {Link, useLocation} from "react-router-dom";
 
 export const Activities = () => {
     const isLoggedin = isAuthenticated();
-    const [numOfVisibleActivityBlueprints, setNumOfVisibleActivityBlueprints] = useState(3); 
+    const [numOfVisibleActivityBlueprints, setNumOfVisibleActivityBlueprints] = useState(6);
 
     const location = useLocation();
     const handleToggleVisibility = () => {
-        setNumOfVisibleActivityBlueprints((prevVisibleCount) => (prevVisibleCount === 3 ? bookingData.bookings.length : 3));
+        setNumOfVisibleActivityBlueprints((prevVisibleCount) => (prevVisibleCount === numOfVisibleActivityBlueprints ? (numOfVisibleActivityBlueprints+6) : 3));
     };
     if (isLoggedin) {
         return (
@@ -86,7 +86,7 @@ export const Activities = () => {
                     {bookingData.bookings.length > 3 && (
                         <Row className="text-center">
                             <Button className="showMorePosition" variant="primary" onClick={handleToggleVisibility}>
-                                {numOfVisibleActivityBlueprints === 3 ? 'Show More' : 'Show Less'}
+                                {numOfVisibleActivityBlueprints === numOfVisibleActivityBlueprints ? 'Prikaži više' : 'Prikaži manje'}
                             </Button>
                         </Row>
                     )}

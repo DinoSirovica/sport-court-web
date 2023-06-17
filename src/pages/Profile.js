@@ -32,7 +32,7 @@ export const Profile = () => {
     }
 
     return (<>
-            <Row xs={1} sm={1} md={3} className='align-top justify-content-around  px-5 py-5 g-3'>
+            <Row xs={1} sm={1} md={3} className='align-top justify-content-around mb-5 p-5 g-3'>
                 <Col key={1} className='mx-0 p-0 text-center'>
                     <ProfileDetailCard user={user} userUpdate={updateUserValues}/>
                 </Col>

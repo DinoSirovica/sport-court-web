@@ -64,9 +64,8 @@
 }
 
 .showMorePosition {
+    margin: 0 auto;
     margin-bottom: 20px;
     width: 200px;
-    position: relative;
-    left: 3%;
 
 }

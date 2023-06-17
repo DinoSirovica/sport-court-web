@@ -9,6 +9,10 @@ More information about the competition can be found at their official website (h
 - Maximilian Pokupec
 - Dino Sirovica
 
+### Special thanks
+Special thanks to our mentors from Ars Futura, who helped and guided us throughout the whole project.
+
+
 ### GitHub repositories
 Frontend repository can be found at: https://github.com/DinoSirovica/sport-court-web
 <br>
