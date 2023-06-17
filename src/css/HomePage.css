@@ -3,8 +3,7 @@
 }
 
 .h2Move {
-    margin: 30px;
-    margin-bottom: 50px;
+    margin: 30px 30px 50px;
 }
 
 .column {
@@ -14,8 +13,8 @@
 }
 
 .column-text {
-    font-size: 28;
-    font-style: bold;
+    font-size: 28px;
+    font-weight: bold;
     padding: 5px;
 }
 

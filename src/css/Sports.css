@@ -9,23 +9,26 @@
 
 .image:hover {
     opacity: 50%;
-
 }
 
 
 .sport-content {
     position: relative;
-    bottom: 30px;
+    bottom: 40px;
+    padding: 6px;
     background-color: black;
     opacity: 70%;
-    border-radius: 12px;
+    border-radius:  0 0 12px 12px;
 }
 
 .text {
     text-align: center;
     color: white;
+    font-size: 18px!important;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
 
-    border-radius: 12px;
 }
 
 .text :hover {

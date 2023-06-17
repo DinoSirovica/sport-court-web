@@ -6,7 +6,6 @@ export const SportButton = ({image, altText, onClick}) => {
         <div style={{display: 'inline-block'}}>
             <img src={image} alt={altText} className="image" onClick={onClick}/>
             <div className="sport-content">
-
                 <p className="text">{altText}</p>
             </div>
         </div>

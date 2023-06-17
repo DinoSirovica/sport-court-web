@@ -33,7 +33,7 @@ export const Footer = () => {
         return (
             <footer className="footer">
                 <Container>
-                    <Row className="justify-content-center text-center mb-5 p-1">
+                    <Row className="justify-content-center text-center mb-5 p-2">
                         <Col md={4}>
                             <Link className="link" to="/"> Naslovna </Link>
                         </Col>

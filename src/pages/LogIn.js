@@ -37,8 +37,8 @@ export const LogIn = () => {
     };
 
     return (
-        <Container fluid="xs" className="align-items-center pt-5 ">
-            <Row className="mb-5">
+        <Container fluid="xs" className="align-items-center pt-5">
+            <Row className="mb-5 mt-3">
                 <Col></Col>
                 <Col xs={7} md={6}>
                     <h1 className="text-center mb-4">Prijavi se</h1>
@@ -50,7 +50,7 @@ export const LogIn = () => {
                 <Col></Col>
             </Row>
             <Row className="mb-4"><h2 className="text-center">ili</h2></Row>
-            <Row>
+            <Row style={{marginBottom: "5em"}}>
                 <Col></Col>
                 <Col xs={7} md={6}>
                     <div>
