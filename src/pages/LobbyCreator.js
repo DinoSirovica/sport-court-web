@@ -257,8 +257,7 @@ export const LobbyCreator = () => {
                                         "& .MuiSelect-icon": {
                                             color: theme.palette.primary.contrastText,
                                         },
-                                    }}
-                                >
+                                    }}>
                                     <InputLabel
                                         id="sportLabel"
                                         sx={{
